@@ -6,3 +6,6 @@ dist/
 
 # tailwind full  config
 tailwind.config-full.js
+
+# remove package-lock.json
+package-lock.json
