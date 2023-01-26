@@ -1,0 +1,8 @@
+# node module
+node_modules/
+
+# dist folder
+dist/
+
+# tailwind full  config
+tailwind.config-full.js
