@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/dist/output.css" />
+	<link rel="stylesheet" href="/dist/output.css" />
+
+	<script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
   </head>
   <body class="bg-gray-200">
     <header class="flex justify-between bg-slate-800 text-white px-4">
@@ -297,10 +299,10 @@
               Card
             </a>
           </li>
-          <li class="relative">
-            <a
-              class="flex items-center py-navbar-item px-navbar-item hover:bg-slate-700"
-              href="#"
+          <li x-data="{open: false}" class="relative">
+						<a
+							@click="open = !open"
+              class="cursor-pointer flex items-center py-navbar-item px-navbar-item hover:bg-slate-700"
             >
               My Account
               <svg
@@ -318,7 +320,12 @@
                 />
               </svg>
             </a>
-            <ul class="absolute z-10 w-36 bg-slate-800 right-0 py-2">
+						<ul
+							@click.outside="open = false"
+							x-show="open"
+							x-transition
+							class="absolute z-10 w-36 bg-slate-800 right-0 py-2"
+						>
               <li>
                 <a
                   class="flex items-center py-1 px-4 hover:bg-slate-700"
