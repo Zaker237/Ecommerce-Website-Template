@@ -7,8 +7,9 @@
 	<link rel="stylesheet" href="/dist/output.css" />
 
 	<script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
+	<script src="app.js"></script>
   </head>
-  <body class="bg-gray-200">
+  <body x-data="index" class="bg-gray-200">
 		<header
 			x-data="{mobileMenuOpen: false}"
 			class="flex justify-between bg-slate-800 text-white px-4"
@@ -63,24 +64,32 @@
 				<ul class="">
           <li>
             <a
-              class="flex items-center py-2 px-navbar-item transition-all hover:bg-slate-700"
+              class="flex items-center justify-between py-2 px-navbar-item transition-all hover:bg-slate-700"
               href="/src/cart.html"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-6 h-6 mr-2"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
-                />
-              </svg>
-              Card
+						>
+							<div class="flex items-center">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke-width="1.5"
+									stroke="currentColor"
+									class="w-6 h-6 mr-2"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+									/>
+								</svg>
+								Card
+							</div>
+							<small
+								x-show="productCounter"
+								x-text="productCounter"
+								x-transition
+								class="py-[2px] px-[8px] rounded-full bg-red-500"
+							></small>
             </a>
           </li>
 					<li
@@ -291,7 +300,7 @@
         <ul class="grid grid-flow-col items-center">
           <li>
             <a
-              class="flex items-center py-navbar-item px-navbar-item hover:bg-slate-700"
+              class="relative flex items-center py-navbar-item px-navbar-item hover:bg-slate-700"
               href="/src/cart.html"
             >
               <svg
@@ -308,7 +317,13 @@
                   d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
                 />
               </svg>
-              Card
+							Card
+							<small
+								x-show="productCounter"
+								x-text="productCounter"
+								x-transition
+								class=" absolute py-[2px] px-[8px] top-4 -right-3 rounded-full bg-red-500"
+							></small>
             </a>
           </li>
           <li x-data="{open: false}" class="relative">
