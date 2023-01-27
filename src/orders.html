@@ -10,32 +10,31 @@
     <header class="flex justify-between bg-slate-800 text-white px-4">
       <div>
         <a class="block py-navbar-item" href="/src"> Logo </a>
-      </div>
-      <div
-        class="block fixed top-0 left-0 bottom-0 h-full w-[220px] bg-slate-900 shadow-2xl transition-all md:hidden"
-      >
-        <ul class="">
+			</div>
+			<div class="block fixed z-20 top-0 left-[-220px] bottom-0 h-full w-[220px] bg-slate-900 shadow-2xl transition-all md:hidden">
+				<ul class="">
           <li>
             <a
               class="flex items-center py-2 px-navbar-item transition-all hover:bg-slate-700"
               href="/src/index.html"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="currentColor"
+								class="w-5 h-5 mr-2"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+								/>
+							</svg>						
+							Home
+						</a
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-5 h-5 mr-2"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-                />
-              </svg>
-              Home
-            </a>
           </li>
           <li>
             <a
@@ -51,8 +50,8 @@
               >Somethings</a
             >
           </li>
-        </ul>
-        <ul class="">
+				</ul>
+				<ul class="">
           <li>
             <a
               class="flex items-center py-2 px-navbar-item transition-all hover:bg-slate-700"
@@ -188,7 +187,10 @@
             </ul>
           </li>
           <li class="my-3">
-            <a class="flex items-center btn-emerald" href="/src/login.html">
+            <a
+              class="flex items-center py-2 px-navbar-item transition-all hover:bg-slate-700"
+              href="/src/login.html"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -208,7 +210,7 @@
           </li>
           <li class="px-3">
             <a
-              class="flex items-center py-2 px-2 rounded transition-colors bg-emerald-500 hover:bg-emerald-600"
+              class="flex items-center btn-emerald"
               href="/src/signup.html"
             >
               <svg
@@ -229,30 +231,31 @@
             </a>
           </li>
         </ul>
-      </div>
+			</div>
       <nav class="hidden md:block">
         <ul class="grid grid-flow-col">
           <li>
             <a
               class="flex items-center py-navbar-item px-navbar-item hover:bg-slate-700"
               href="/src/index.html"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="currentColor"
+								class="w-6 h-6 mr-2"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+								/>
+							</svg>
+							Home
+						</a
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-6 h-6 mr-2"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-                />
-              </svg>
-              Home
-            </a>
           </li>
           <li>
             <a
@@ -429,7 +432,10 @@
             </a>
           </li>
           <li>
-            <a class="flex items-center btn-emerald" href="/src/signup.html">
+            <a
+              class="flex items-center btn-emerald"
+              href="/src/signup.html"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -465,11 +471,11 @@
           />
         </svg>
       </button>
-    </header>
+		</header>
 
     <div class="container mx-auto lg:w-2/3 p-5">
       <h1 class="text-xl font-bold mb-2">My Orders</h1>
-      <div class="bg-white rounded-lg p-3">
+      <div class="bg-white rounded-lg p-3 overflow-x-auto">
         <table class="table-auto w-full">
           <thead>
             <tr class="border-b-2">
@@ -490,7 +496,7 @@
                   #1234
                 </a>
               </td>
-              <td class="py-1 px-2">17th of Januar, 13:10</td>
+              <td class="py-1 px-2 whitespace-nowrap">17th of Januar, 13:10</td>
               <td class="py-1 px-2">
                 <span class="bg-gray-400 py-1 px-2 rounded text-white"
                   >Unpaid</span
@@ -549,7 +555,7 @@
                   #1234
                 </a>
               </td>
-              <td class="py-1 px-2">17th of Januar, 13:10</td>
+              <td class="py-1 px-2 whitespace-nowrap">17th of Januar, 13:10</td>
               <td class="py-1 px-2">
                 <span class="bg-orange-400 py-1 px-2 rounded text-white"
                   >Pending</span
@@ -608,7 +614,7 @@
                   #1234
                 </a>
               </td>
-              <td class="py-1 px-2">17th of Januar, 13:10</td>
+              <td class="py-1 px-2 whitespace-nowrap">17th of Januar, 13:10</td>
               <td class="py-1 px-2">
                 <span class="bg-red-400 py-1 px-2 rounded text-white"
                   >Failed</span
@@ -667,7 +673,7 @@
                   #1234
                 </a>
               </td>
-              <td class="py-1 px-2">17th of Januar, 13:10</td>
+              <td class="py-1 px-2 whitespace-nowrap">17th of Januar, 13:10</td>
               <td class="py-1 px-2">
                 <span class="bg-gray-400 py-1 px-2 rounded text-white"
                   >Unpaid</span
