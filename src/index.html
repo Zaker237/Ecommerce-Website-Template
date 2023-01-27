@@ -4,10 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-	<link rel="stylesheet" href="/dist/output.css" />
+		<link rel="stylesheet" href="/dist/output.css" />
 
-	<script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
-	<script src="app.js"></script>
+		<script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
+		<script src="app.js"></script>
+
+		<style>
+			[x-cloak] {
+				display: none !important;
+			}
+		</style>
   </head>
   <body x-data="index" class="bg-gray-200">
 		<header
@@ -321,8 +327,9 @@
 							<small
 								x-show="productCounter"
 								x-text="productCounter"
+								x-cloak
 								x-transition
-								class=" absolute py-[2px] px-[8px] top-4 -right-3 rounded-full bg-red-500"
+								class=" absolute z-[100] py-[2px] px-[8px] top-4 -right-3 rounded-full bg-red-500"
 							></small>
             </a>
           </li>
@@ -351,6 +358,7 @@
 							@click.outside="open = false"
 							x-show="open"
 							x-transition
+							x-cloak
 							class="absolute z-10 w-36 bg-slate-800 right-0 py-2"
 						>
               <li>
@@ -551,9 +559,9 @@
 							</svg>							
 						</button>
 						<button
-							class="flex items-center bg-purple-600 text-white py-2 px-3 rounded transition-colors 
-									 hover:bg-purple-700 active:bg-purple-800 shadow-md"
-							>
+							@click="addToCart"
+							class="flex items-center btn-primary"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -612,9 +620,9 @@
 							</svg>							
 						</button>
 						<button
-							class="flex items-center bg-purple-600 text-white py-2 px-3 rounded transition-colors 
-									 hover:bg-purple-700 active:bg-purple-800 shadow-md"
-							>
+							@click="addToCart"
+							class="flex items-center btn-primary"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -673,9 +681,9 @@
 							</svg>							
 						</button>
 						<button
-							class="flex items-center bg-purple-600 text-white py-2 px-3 rounded transition-colors 
-									 hover:bg-purple-700 active:bg-purple-800 shadow-md"
-							>
+							@click="addToCart"
+							class="flex items-center btn-primary"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -734,9 +742,9 @@
 							</svg>							
 						</button>
 						<button
-							class="flex items-center bg-purple-600 text-white py-2 px-3 rounded transition-colors 
-									 hover:bg-purple-700 active:bg-purple-800 shadow-md"
-							>
+							@click="addToCart"
+							class="flex items-center btn-primary"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -795,9 +803,9 @@
 							</svg>							
 						</button>
 						<button
-							class="flex items-center bg-purple-600 text-white py-2 px-3 rounded transition-colors 
-									 hover:bg-purple-700 active:bg-purple-800 shadow-md"
-							>
+							@click="addToCart"
+							class="flex items-center btn-primary"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -856,9 +864,9 @@
 							</svg>							
 						</button>
 						<button
-							class="flex items-center bg-purple-600 text-white py-2 px-3 rounded transition-colors 
-									 hover:bg-purple-700 active:bg-purple-800 shadow-md"
-							>
+							@click="addToCart"
+							class="flex items-center btn-primary"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -917,9 +925,9 @@
 							</svg>							
 						</button>
 						<button
-							class="flex items-center bg-purple-600 text-white py-2 px-3 rounded transition-colors 
-									 hover:bg-purple-700 active:bg-purple-800 shadow-md"
-							>
+							@click="addToCart"
+							class="flex items-center btn-primary"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -978,9 +986,9 @@
 							</svg>							
 						</button>
 						<button
-							class="flex items-center bg-purple-600 text-white py-2 px-3 rounded transition-colors 
-									 hover:bg-purple-700 active:bg-purple-800 shadow-md"
-							>
+							@click="addToCart"
+							class="flex items-center btn-primary"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -1039,9 +1047,9 @@
 							</svg>							
 						</button>
 						<button
-							class="flex items-center bg-purple-600 text-white py-2 px-3 rounded transition-colors 
-									 hover:bg-purple-700 active:bg-purple-800 shadow-md"
-							>
+							@click="addToCart"
+							class="flex items-center btn-primary"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -1100,9 +1108,9 @@
 							</svg>							
 						</button>
 						<button
-							class="flex items-center bg-purple-600 text-white py-2 px-3 rounded transition-colors 
-									 hover:bg-purple-700 active:bg-purple-800 shadow-md"
-							>
+							@click="addToCart"
+							class="flex items-center btn-primary"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -1161,9 +1169,9 @@
 							</svg>							
 						</button>
 						<button
-							class="flex items-center bg-purple-600 text-white py-2 px-3 rounded transition-colors 
-									 hover:bg-purple-700 active:bg-purple-800 shadow-md"
-							>
+							@click="addToCart"
+							class="flex items-center btn-primary"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -1222,9 +1230,9 @@
 							</svg>							
 						</button>
 						<button
-							class="flex items-center bg-purple-600 text-white py-2 px-3 rounded transition-colors 
-									 hover:bg-purple-700 active:bg-purple-800 shadow-md"
-							>
+							@click="addToCart"
+							class="flex items-center btn-primary"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -1247,5 +1255,39 @@
 			<!-- Product Item -->
 		</div>
 		<!--/ Product List-->
+		<!-- Toast -->
+		<div
+      x-show="toast.visible"
+      x-transition
+			class="fixed w-[400px] left-1/2 -ml-[200px] top-16 py-2 px-4 pb-4 bg-emerald-500 text-white"
+			x-cloak
+    >
+      <div class="font-semibold" x-text="toast.message"></div>
+      <button
+        @click="toast.close"
+        class="absolute flex items-center justify-center right-2 top-2 w-[30px] h-[30px] rounded-full hover:bg-black/10 transition-colors"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+      <!-- Progress -->
+      <div
+				class="absolute left-0 bottom-0 right-0 h-[6px] bg-black/10"
+        :style="{'width': `${toast.percent}%`}"
+      ></div>
+    </div>
+		<!--/ Toast -->
   </body>
 </html>
