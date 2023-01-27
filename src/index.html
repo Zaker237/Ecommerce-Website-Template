@@ -9,11 +9,18 @@
 	<script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
   </head>
   <body class="bg-gray-200">
-    <header class="flex justify-between bg-slate-800 text-white px-4">
+		<header
+			x-data="{mobileMenuOpen: false}"
+			class="flex justify-between bg-slate-800 text-white px-4"
+		>
       <div>
         <a class="block py-navbar-item" href="/src"> Logo </a>
 			</div>
-			<div class="block fixed z-20 top-0 left-[-220px] bottom-0 h-full w-[220px] bg-slate-900 shadow-2xl transition-all md:hidden">
+			<!-- Mobile header -->
+			<div
+				class="block fixed z-20 top-0 bottom-0 h-full w-[220px] bg-slate-900 shadow-2xl transition-all md:hidden"
+				:class="mobileMenuOpen ? 'left-0' : '-left-[220px]'"
+			>
 				<ul class="">
           <li>
             <a
@@ -76,10 +83,13 @@
               Card
             </a>
           </li>
-          <li class="relative">
-            <a
-              class="flex justify-between items-center py-2 px-navbar-item transition-all hover:bg-slate-700"
-              href="#"
+					<li
+						x-data="{open: false}"
+						class="relative"
+					>
+						<a
+							@click="open = !open"
+              class="cursor-pointer flex justify-between items-center py-2 px-navbar-item transition-all hover:bg-slate-700"
             >
               My Account
               <svg
@@ -97,7 +107,7 @@
                 />
               </svg>
             </a>
-            <ul class="w-full bg-slate-800 py-2">
+            <ul x-show="open" x-transition class="w-full bg-slate-800 py-2">
               <li>
                 <a
                   class="flex items-center py-1 px-4 hover:bg-slate-700"
@@ -234,6 +244,8 @@
           </li>
         </ul>
 			</div>
+			<!--/ Mobile header -->
+			<!-- Navbar -->
       <nav class="hidden md:block">
         <ul class="grid grid-flow-col">
           <li>
@@ -461,8 +473,12 @@
             </a>
           </li>
         </ul>
-      </nav>
-      <button class="block md:hidden">
+			</nav>
+			<!--/ Navbar -->
+			<button
+				@click="mobileMenuOpen = !mobileMenuOpen"
+				class="p-4 block md:hidden"
+			>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
