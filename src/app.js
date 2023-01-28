@@ -1,9 +1,25 @@
 document.addEventListener('alpine:init', () => {
 	Alpine.data('index', () => ({
-		productCounter: 0,
+		cartItems: 0,
+		watchingItems: [],
+		get watchlistItems(){
+			return this.watchingItems.length;
+		},
 		addToCart() {
-			this.productCounter++;
+			this.cartItems++;
 			this.toast.show('The item was added into the cart');
+		},
+		addToWatchlist(id) {
+			if(this.watchingItems.includes(id)){
+				this.watchingItems.splice(this.watchingItems.indexOf(id), 1);
+				this.toast.show('The item was removed into the watchlist');
+			}else{
+				this.watchingItems.push(id);
+				this.toast.show('The item was added into the watchlist');
+			}
+		},
+		isInWatchlist(id){
+			return this.watchingItems.includes(id);
 		},
 		toast: {
 			visible: false,

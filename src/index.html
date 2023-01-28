@@ -91,8 +91,8 @@
 								Card
 							</div>
 							<small
-								x-show="productCounter"
-								x-text="productCounter"
+								x-show="cartItems"
+								x-text="cartItems"
 								x-transition
 								class="py-[2px] px-[8px] rounded-full bg-red-500"
 							></small>
@@ -142,7 +142,13 @@
                       d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
                     />
                   </svg>
-                  Watchlist
+									Watchlist
+									<small
+										x-show="watchlistItems"
+										x-text="watchlistItems"
+										x-transition
+										class="py-[2px] px-[8px] rounded-full bg-red-500"
+									></small>
                 </a>
               </li>
               <li>
@@ -325,8 +331,8 @@
               </svg>
 							Card
 							<small
-								x-show="productCounter"
-								x-text="productCounter"
+								x-show="cartItems"
+								x-text="cartItems"
 								x-cloak
 								x-transition
 								class=" absolute z-[100] py-[2px] px-[8px] top-4 -right-3 rounded-full bg-red-500"
@@ -363,24 +369,32 @@
 						>
               <li>
                 <a
-                  class="flex items-center py-1 px-4 hover:bg-slate-700"
+                  class="flex items-center justify-between py-2 px-3 hover:bg-slate-700"
                   href="/src/watchlist.html"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="w-5 h-5 mr-2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
-                    />
-                  </svg>
-                  Watchlist
+								>
+									<div class="flex items-center">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke-width="1.5"
+											stroke="currentColor"
+											class="w-5 h-5 mr-2"
+										>
+											<path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+											/>
+										</svg>
+										Watchlist
+									</div>
+									<small
+										x-show="watchlistItems"
+										x-text="watchlistItems"
+										x-transition
+										class="py-[2px] px-[8px] rounded-full bg-red-500"
+									></small>
                 </a>
               </li>
               <li>
@@ -540,8 +554,10 @@
 					<p class="text-xl font-bold">$19.99</p>
 					<div class="flex justify-between mt-3">
 						<button
-							class="flex items-center justify-center w-10 h-10 text-purple-700 hover:text-white hover:bg-purple-700 rounded-full
+							@click="addToWatchlist(1)"
+							class="flex items-center justify-center w-10 h-10 hover:text-white hover:bg-purple-700 rounded-full
 										 transition-colors border-2 border-purple-700 active:bg-purple-800"
+							:class="isInWatchlist(1) ? 'bg-purple-700 text-white' : 'text-purple-700'"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -601,8 +617,10 @@
 					<p class="text-xl font-bold">$19.99</p>
 					<div class="flex justify-between mt-3">
 						<button
-							class="flex items-center justify-center w-10 h-10 text-purple-700 hover:text-white hover:bg-purple-700 rounded-full
+							@click="addToWatchlist(2)"
+							class="flex items-center justify-center w-10 h-10 hover:text-white hover:bg-purple-700 rounded-full
 										 transition-colors border-2 border-purple-700 active:bg-purple-800"
+										 :class="isInWatchlist(2) ? 'bg-purple-700 text-white' : 'text-purple-700'"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -662,8 +680,10 @@
 					<p class="text-xl font-bold">$19.99</p>
 					<div class="flex justify-between mt-3">
 						<button
-							class="flex items-center justify-center w-10 h-10 text-purple-700 hover:text-white hover:bg-purple-700 rounded-full
+							@click="addToWatchlist(3)"
+							class="flex items-center justify-center w-10 h-10 hover:text-white hover:bg-purple-700 rounded-full
 										 transition-colors border-2 border-purple-700 active:bg-purple-800"
+							:class="isInWatchlist(3) ? 'bg-purple-700 text-white' : 'text-purple-700'"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -723,8 +743,10 @@
 					<p class="text-xl font-bold">$19.99</p>
 					<div class="flex justify-between mt-3">
 						<button
-							class="flex items-center justify-center w-10 h-10 text-purple-700 hover:text-white hover:bg-purple-700 rounded-full
+							@click="addToWatchlist(4)"
+							class="flex items-center justify-center w-10 h-10 hover:text-white hover:bg-purple-700 rounded-full
 										 transition-colors border-2 border-purple-700 active:bg-purple-800"
+							:class="isInWatchlist(4) ? 'bg-purple-700 text-white' : 'text-purple-700'"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -784,8 +806,10 @@
 					<p class="text-xl font-bold">$19.99</p>
 					<div class="flex justify-between mt-3">
 						<button
-							class="flex items-center justify-center w-10 h-10 text-purple-700 hover:text-white hover:bg-purple-700 rounded-full
+							@click="addToWatchlist(5)"
+							class="flex items-center justify-center w-10 h-10 hover:text-white hover:bg-purple-700 rounded-full
 										 transition-colors border-2 border-purple-700 active:bg-purple-800"
+							:class="isInWatchlist(5) ? 'bg-purple-700 text-white' : 'text-purple-700'"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -845,8 +869,10 @@
 					<p class="text-xl font-bold">$19.99</p>
 					<div class="flex justify-between mt-3">
 						<button
-							class="flex items-center justify-center w-10 h-10 text-purple-700 hover:text-white hover:bg-purple-700 rounded-full
+							@click="addToWatchlist(6)"
+							class="flex items-center justify-center w-10 h-10 hover:text-white hover:bg-purple-700 rounded-full
 										 transition-colors border-2 border-purple-700 active:bg-purple-800"
+							:class="isInWatchlist(6) ? 'bg-purple-700 text-white' : 'text-purple-700'"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -906,8 +932,10 @@
 					<p class="text-xl font-bold">$19.99</p>
 					<div class="flex justify-between mt-3">
 						<button
-							class="flex items-center justify-center w-10 h-10 text-purple-700 hover:text-white hover:bg-purple-700 rounded-full
+							@click="addToWatchlist(7)"
+							class="flex items-center justify-center w-10 h-10 hover:text-white hover:bg-purple-700 rounded-full
 										 transition-colors border-2 border-purple-700 active:bg-purple-800"
+							:class="isInWatchlist(7) ? 'bg-purple-700 text-white' : 'text-purple-700'"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -967,8 +995,10 @@
 					<p class="text-xl font-bold">$19.99</p>
 					<div class="flex justify-between mt-3">
 						<button
-							class="flex items-center justify-center w-10 h-10 text-purple-700 hover:text-white hover:bg-purple-700 rounded-full
-										 transition-colors border-2 border-purple-700 active:bg-purple-800"
+						@click="addToWatchlist(8)"
+						class="flex items-center justify-center w-10 h-10 hover:text-white hover:bg-purple-700 rounded-full
+									 transition-colors border-2 border-purple-700 active:bg-purple-800"
+						:class="isInWatchlist(8) ? 'bg-purple-700 text-white' : 'text-purple-700'"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -1028,8 +1058,10 @@
 					<p class="text-xl font-bold">$19.99</p>
 					<div class="flex justify-between mt-3">
 						<button
-							class="flex items-center justify-center w-10 h-10 text-purple-700 hover:text-white hover:bg-purple-700 rounded-full
-										 transition-colors border-2 border-purple-700 active:bg-purple-800"
+						@click="addToWatchlist(9)"
+						class="flex items-center justify-center w-10 h-10 hover:text-white hover:bg-purple-700 rounded-full
+									 transition-colors border-2 border-purple-700 active:bg-purple-800"
+						:class="isInWatchlist(9) ? 'bg-purple-700 text-white' : 'text-purple-700'"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -1089,8 +1121,10 @@
 					<p class="text-xl font-bold">$19.99</p>
 					<div class="flex justify-between mt-3">
 						<button
-							class="flex items-center justify-center w-10 h-10 text-purple-700 hover:text-white hover:bg-purple-700 rounded-full
-										 transition-colors border-2 border-purple-700 active:bg-purple-800"
+						@click="addToWatchlist(10)"
+						class="flex items-center justify-center w-10 h-10 hover:text-white hover:bg-purple-700 rounded-full
+									 transition-colors border-2 border-purple-700 active:bg-purple-800"
+						:class="isInWatchlist(10) ? 'bg-purple-700 text-white' : 'text-purple-700'"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -1150,8 +1184,10 @@
 					<p class="text-xl font-bold">$19.99</p>
 					<div class="flex justify-between mt-3">
 						<button
-							class="flex items-center justify-center w-10 h-10 text-purple-700 hover:text-white hover:bg-purple-700 rounded-full
-										 transition-colors border-2 border-purple-700 active:bg-purple-800"
+						@click="addToWatchlist(11)"
+						class="flex items-center justify-center w-10 h-10 hover:text-white hover:bg-purple-700 rounded-full
+									 transition-colors border-2 border-purple-700 active:bg-purple-800"
+						:class="isInWatchlist(11) ? 'bg-purple-700 text-white' : 'text-purple-700'"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -1211,8 +1247,10 @@
 					<p class="text-xl font-bold">$19.99</p>
 					<div class="flex justify-between mt-3">
 						<button
-							class="flex items-center justify-center w-10 h-10 text-purple-700 hover:text-white hover:bg-purple-700 rounded-full
-										 transition-colors border-2 border-purple-700 active:bg-purple-800"
+						@click="addToWatchlist(12)"
+						class="flex items-center justify-center w-10 h-10 hover:text-white hover:bg-purple-700 rounded-full
+									 transition-colors border-2 border-purple-700 active:bg-purple-800"
+						:class="isInWatchlist(12) ? 'bg-purple-700 text-white' : 'text-purple-700'"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
