@@ -48,12 +48,13 @@ document.addEventListener('alpine:init', () => {
 		},
 	}));
 
-	Alpine.data('productItem', () => ({
+	Alpine.data('productItem', () => (id) => ({
+		id: id,
 		quantity: 1,
 		get watchlistItems() {
 			return this.$store.header.watchlistItems;
 		},
-		addToCart(quantity = 1) {
+		addToCart(id, quantity = 1) {
 			this.$store.header.cartItems += parseInt(quantity);
 			this.$dispatch('notify', {
 				message: 'The item was added into the cart'
