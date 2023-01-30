@@ -48,25 +48,26 @@ document.addEventListener('alpine:init', () => {
 		},
 	});
 
-				if(this.timeout){
-					clearTimeout(this.timeout);
-				}
-
-				this.timeout = setTimeout(() => {
-					this.visible = false;
-					this.timeout = null;
-				}, this.delay);
-				const startDate = Date.now();
-				const futureDate = Date.now() + this.delay;
-				this.interval = setInterval(() => {
-					const date = Date.now();
-					this.percent = (date - startDate) * 100 / (futureDate - startDate);
-					if (this.percent >= 100){
-						clearInterval(this.interval);
-						this.interval = null;
-					}
-				}, 30)
-			},
-		}
-	}))
+	Alpine.data('productItem', () => ({
+		quantity: 1,
+		get watchlistItems() {
+			return this.$store.header.watchlistItems;
+		},
+		addToCart(quantity = 1) {
+			this.$store.header.cartItems += parseInt(quantity);
+			this.$store.toast.show('The item was added into the cart');
+		},
+		addToWatchlist(id) {
+			if (this.$store.header.watchingItems.includes(id)) {
+				this.$store.header.watchingItems.splice(this.$store.header.watchingItems.indexOf(id), 1);
+				this.$store.toast.show('The item was removed into the watchlist');
+			} else {
+				this.$store.header.watchingItems.push(id);
+				this.$store.toast.show('The item was added into the watchlist');
+			}
+		},
+		isInWatchlist(id) {
+			return this.$store.header.watchingItems.includes(id);
+		},
+	}));
 });
