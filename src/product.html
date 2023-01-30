@@ -6,6 +6,12 @@
     <title>Document</title>
     <link rel="stylesheet" href="/dist/output.css" />
 
+    <!-- Alpine Plugins -->
+    <script
+      defer
+      src="https://unpkg.com/@alpinejs/collapse@3.10.2/dist/cdn.min.js"
+    ></script>
+
     <script
       defer
       src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"
@@ -717,68 +723,81 @@
         </button>
 
         <hr class="my-5 border border-white" />
+        <div x-data="{expanded: false}" class="b-6">
+          <div
+            x-show="expanded"
+            x-collapse.min.130px
+            class="wysiwyg-editor"
+          >
+            <table>
+              <tbody>
+                <tr>
+                  <td>Connectivity Technology</td>
+                  <td>USB</td>
+                </tr>
+                <tr>
+                  <td>Recommended Uses For Product</td>
+                  <td>Gaming</td>
+                </tr>
+                <tr>
+                  <td>Brand</td>
+                  <td>Logitech G</td>
+                </tr>
+                <tr>
+                  <td>Compatible Devices</td>
+                  <td>Personal Computer</td>
+                </tr>
+                <tr>
+                  <td>Series</td>
+                  <td>Logitech G502 HERO High Performance Gaming Mouse</td>
+                </tr>
+              </tbody>
+            </table>
 
-        <div class="wysiwyg-editor">
-          <table>
-            <tbody>
-              <tr>
-                <td>Connectivity Technology</td>
-                <td>USB</td>
-              </tr>
-              <tr>
-                <td>Recommended Uses For Product</td>
-                <td>Gaming</td>
-              </tr>
-              <tr>
-                <td>Brand</td>
-                <td>Logitech G</td>
-              </tr>
-              <tr>
-                <td>Compatible Devices</td>
-                <td>Personal Computer</td>
-              </tr>
-              <tr>
-                <td>Series</td>
-                <td>Logitech G502 HERO High Performance Gaming Mouse</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <p class="">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt
-            suscipit natus quisquam optio voluptatem quo beatae ex similique,
-            pariatur laborum asperiores explicabo delectus culpa cumque corrupti
-            quasi incidunt at quos!
+            <p class="">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt
+              suscipit natus quisquam optio voluptatem quo beatae ex similique,
+              pariatur laborum asperiores explicabo delectus culpa cumque corrupti
+              quasi incidunt at quos!
+            </p>
+            <h4>About the item</h4>
+            <ul class="list-disc pl-6">
+              <li>
+                Hero 25K sensor through a software update from G HUB, this upgrade
+                is free to all players: Our most advanced, with 1:1 tracking,
+                400-plus ips, and 100 - 25,600 max dpi sensitivity plus zero
+                smoothing, filtering, or acceleration
+              </li>
+              <li>
+                11 customizable buttons and onboard memory: Assign custom commands
+                to the buttons and save up to five ready to play profiles directly
+                to the mouse
+              </li>
+              <li>
+                Adjustable weight system: Arrange up to five removable 3.6 grams
+                weights inside the mouse for personalized weight and balance
+                tuning
+              </li>
+              <li>
+                Programmable RGB Lighting and Lightsync technology: Customize
+                lighting from nearly 16.8 million colors to match your team's
+                colors, sport your own or sync colors with other Logitech G gear
+              </li>
+              <li>
+                Mechanical switch button tensioning: Metal spring tensioning
+                system and pivot hinges are built into left and right gaming mouse
+                buttons for a crisp, clean click feel with rapid click feedback
+              </li>
+            </ul>
+          </div>
+          <p class="text-right">
+            <a
+            @click="expanded = !expanded"
+            class="text-purple-600 hover:text-purple-800"
+            href="javascript:void(0)"
+            x-text="expanded ? 'Read Less' : 'Read More'"
+            ></a>
           </p>
-          <h4>About the item</h4>
-          <ul class="list-disc pl-6">
-            <li>
-              Hero 25K sensor through a software update from G HUB, this upgrade
-              is free to all players: Our most advanced, with 1:1 tracking,
-              400-plus ips, and 100 - 25,600 max dpi sensitivity plus zero
-              smoothing, filtering, or acceleration
-            </li>
-            <li>
-              11 customizable buttons and onboard memory: Assign custom commands
-              to the buttons and save up to five ready to play profiles directly
-              to the mouse
-            </li>
-            <li>
-              Adjustable weight system: Arrange up to five removable 3.6 grams
-              weights inside the mouse for personalized weight and balance
-              tuning
-            </li>
-            <li>
-              Programmable RGB Lighting and Lightsync technology: Customize
-              lighting from nearly 16.8 million colors to match your team's
-              colors, sport your own or sync colors with other Logitech G gear
-            </li>
-            <li>
-              Mechanical switch button tensioning: Metal spring tensioning
-              system and pivot hinges are built into left and right gaming mouse
-              buttons for a crisp, clean click feel with rapid click feedback
-            </li>
-          </ul>
         </div>
       </div>
     </div>
