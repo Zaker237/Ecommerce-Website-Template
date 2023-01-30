@@ -1,7 +1,7 @@
 document.addEventListener('alpine:init', () => {
 	Alpine.store('header', {
-		cartItems: 0,
-		watchingItems: [],
+		cartItems: Alpine.$persist(0),
+		watchingItems: Alpine.$persist([]),
 		get watchlistItems() {
 			return this.watchingItems.length;
 		},
