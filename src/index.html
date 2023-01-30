@@ -15,7 +15,7 @@
 			}
 		</style>
   </head>
-  <body x-data="index" class="bg-gray-200">
+  <body x-data="productItem" class="bg-gray-200">
 		<header
 			x-data="{mobileMenuOpen: false}"
 			class="flex justify-between bg-slate-800 text-white px-4"
@@ -91,8 +91,8 @@
 								Card
 							</div>
 							<small
-								x-show="cartItems"
-								x-text="cartItems"
+								x-show="$store.header.cartItems"
+								x-text="$store.header.cartItems"
 								x-transition
 								class="py-[2px] px-[8px] rounded-full bg-red-500"
 							></small>
@@ -144,8 +144,8 @@
                   </svg>
 									Watchlist
 									<small
-										x-show="watchlistItems"
-										x-text="watchlistItems"
+										x-show="$store.header.watchlistItems"
+										x-text="$store.header.watchlistItems"
 										x-transition
 										class="py-[2px] px-[8px] rounded-full bg-red-500"
 									></small>
@@ -331,8 +331,8 @@
               </svg>
 							Card
 							<small
-								x-show="cartItems"
-								x-text="cartItems"
+								x-show="$store.header.cartItems"
+								x-text="$store.header.cartItems"
 								x-cloak
 								x-transition
 								class=" absolute z-[100] py-[2px] px-[8px] top-4 -right-3 rounded-full bg-red-500"
@@ -390,8 +390,8 @@
 										Watchlist
 									</div>
 									<small
-										x-show="watchlistItems"
-										x-text="watchlistItems"
+										x-show="$store.header.watchlistItems"
+										x-text="$store.header.watchlistItems"
 										x-transition
 										class="py-[2px] px-[8px] rounded-full bg-red-500"
 									></small>
@@ -575,7 +575,7 @@
 							</svg>							
 						</button>
 						<button
-							@click="addToCart"
+							@click="addToCart()"
 							class="flex items-center btn-primary"
 						>
 							<svg
@@ -638,7 +638,7 @@
 							</svg>							
 						</button>
 						<button
-							@click="addToCart"
+							@click="addToCart()"
 							class="flex items-center btn-primary"
 						>
 							<svg
@@ -701,7 +701,7 @@
 							</svg>							
 						</button>
 						<button
-							@click="addToCart"
+							@click="addToCart()"
 							class="flex items-center btn-primary"
 						>
 							<svg
@@ -764,7 +764,7 @@
 							</svg>							
 						</button>
 						<button
-							@click="addToCart"
+							@click="addToCart()"
 							class="flex items-center btn-primary"
 						>
 							<svg
@@ -827,7 +827,7 @@
 							</svg>							
 						</button>
 						<button
-							@click="addToCart"
+							@click="addToCart()"
 							class="flex items-center btn-primary"
 						>
 							<svg
@@ -890,7 +890,7 @@
 							</svg>							
 						</button>
 						<button
-							@click="addToCart"
+							@click="addToCart()"
 							class="flex items-center btn-primary"
 						>
 							<svg
@@ -953,7 +953,7 @@
 							</svg>							
 						</button>
 						<button
-							@click="addToCart"
+							@click="addToCart()"
 							class="flex items-center btn-primary"
 						>
 							<svg
@@ -1016,7 +1016,7 @@
 							</svg>							
 						</button>
 						<button
-							@click="addToCart"
+							@click="addToCart()"
 							class="flex items-center btn-primary"
 						>
 							<svg
@@ -1079,7 +1079,7 @@
 							</svg>							
 						</button>
 						<button
-							@click="addToCart"
+							@click="addToCart()"
 							class="flex items-center btn-primary"
 						>
 							<svg
@@ -1142,7 +1142,7 @@
 							</svg>							
 						</button>
 						<button
-							@click="addToCart"
+							@click="addToCart()"
 							class="flex items-center btn-primary"
 						>
 							<svg
@@ -1205,7 +1205,7 @@
 							</svg>							
 						</button>
 						<button
-							@click="addToCart"
+							@click="addToCart()"
 							class="flex items-center btn-primary"
 						>
 							<svg
@@ -1268,7 +1268,7 @@
 							</svg>							
 						</button>
 						<button
-							@click="addToCart"
+							@click="addToCart()"
 							class="flex items-center btn-primary"
 						>
 							<svg
@@ -1295,15 +1295,17 @@
 		<!--/ Product List-->
 		<!-- Toast -->
 		<div
-      x-show="toast.visible"
+			x-data="toast"
+      x-show="visible"
       x-transition
-			class="fixed w-[400px] left-1/2 -ml-[200px] top-16 py-2 px-4 pb-4 bg-emerald-500 text-white"
 			x-cloak
+			@notify.window="show($event.detail.message)"
+			class="fixed w-[400px] left-1/2 -ml-[200px] top-16 py-2 px-4 pb-4 bg-emerald-500 text-white"
     >
-      <div class="font-semibold" x-text="toast.message"></div>
+      <div class="font-semibold" x-text="message"></div>
       <button
-        @click="toast.close"
-        class="absolute flex items-center justify-center right-2 top-2 w-[30px] h-[30px] rounded-full hover:bg-black/10 transition-colors"
+        @click="close"
+        class="fixed flex items-center justify-center right-2 top-2 w-[30px] h-[30px] rounded-full hover:bg-black/10 transition-colors"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -1323,7 +1325,7 @@
       <!-- Progress -->
       <div
 				class="absolute left-0 bottom-0 right-0 h-[6px] bg-black/10"
-        :style="{'width': `${toast.percent}%`}"
+        :style="{'width': `${percent}%`}"
       ></div>
     </div>
 		<!--/ Toast -->
