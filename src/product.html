@@ -541,7 +541,14 @@
     </header>
 
     <!-- Product Item -->
-    <div x-data="productItem(1)" class="grid grid-cols-1 md:grid-cols-5 gap-6 p-5">
+    <div x-data="productItem(
+      {
+        id: 1,
+        image: 'assets/images/1_1.jpg',
+        title: 'Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K Sensor, 25,600 DPI, RGB, Adjustable Weights, 11',
+        price: 17.99,
+      }
+    )" class="grid grid-cols-1 md:grid-cols-5 gap-6 p-5">
       <div class="md:col-span-3">
         <div
           x-data="{
@@ -845,7 +852,7 @@
       class="absolute left-0 bottom-0 right-0 h-[6px] bg-black/10"
       :style="{'width': `${percent}%`}"
     ></div>
-  </div>
-  <!--/ Toast -->
+    </div>
+    <!--/ Toast -->
   </body>
 </html>
