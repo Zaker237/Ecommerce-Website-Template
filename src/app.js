@@ -8,7 +8,7 @@ document.addEventListener('alpine:init', () => {
 		},
 		get cartItems() {
 			return Object.values(this.cartItemsObject).reduce(
-				(acc, next) => {return acc + parseInt(next.quantity)}, 0
+				(acc, next) => { return acc + parseInt(next.quantity) }, 0
 			);
 		},
 	});
@@ -62,7 +62,7 @@ document.addEventListener('alpine:init', () => {
 			return this.$store.header.watchlistItems;
 		},
 		addToCart(id, quantity = 1) {
-			this.$store.header.cartItemsObject[id] = this.$store.header.cartItemsObject[id] || {...product, quantity: 0};
+			this.$store.header.cartItemsObject[id] = this.$store.header.cartItemsObject[id] || { ...product, quantity: 0 };
 			this.$store.header.cartItemsObject[id].quantity += parseInt(quantity);
 			this.$dispatch('notify', {
 				message: 'The item was added into the Cart'
@@ -89,19 +89,80 @@ document.addEventListener('alpine:init', () => {
 			console.log(this.$store.header.watchingItems)
 		},
 		isInWatchlist() {
-			return this.$store.header.watchingItems.find((p) => {return p.id === product.id});
+			return this.$store.header.watchingItems.find((p) => { return p.id === product.id });
 		},
-		removeItemFromCart(){
+		removeItemFromCart() {
 			delete this.$store.header.cartItemsObject[this.id];
 			this.$dispatch('notify', {
 				message: 'The item was removed from the Cart'
 			});
 		},
-		removeFromWatchlist(){
+		removeFromWatchlist() {
 			this.$store.header.watchingItems.splice(
 				this.$store.header.watchingItems.findIndex((p) => p.id === this.id),
 				1
 			);
 		}
 	}));
+
+	Alpine.data('signupForm', () => ({
+		defaultClasses: 'focus:border-purple-600 focus:ring-purple-600 focus:outline-none',
+		errorClasses: 'border-red-500 focus:border-red-500 focus:ring-red-500 ring-red-600 ring-1',
+		successClasses: 'border-emerald-500 focus:border-emerald-500 focus:ring-emerald-500 ring-green-600 ring-1',
+		form: {
+			name: '',
+			email: '',
+			password: '',
+			password_repeat: ''
+		},
+		errors: {
+			name: '',
+			email: '',
+			password: '',
+			password_repeat: ''
+		},
+		submit() {
+			this.validateName();
+			this.validateEmail();
+			this.validatePassword();
+			this.validatePasswordRepeat();
+		},
+		validateName() {
+			this.errors.name = '';
+			if (!this.form.name) {
+				this.errors.name = 'This Field is required';
+			} else if (this.form.name.length < 2) {
+				this.errors.name = 'This Name should be at least 2 Characters';
+			}
+		},
+		validateEmail() {
+			this.errors.email = '';
+			if (!this.form.email) {
+				this.errors.email = 'This Field is required';
+			} else if (!this.validateEmailWithRegex()) {
+				this.errors.email = 'This must be a valid email';
+			}
+		},
+		validateEmailWithRegex() {
+			return String(this.form.email)
+				.toLowerCase()
+				.match(
+					/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+				);
+		},
+		validatePassword(){
+			this.errors.password = '';
+			if (!this.form.password) {
+				this.errors.password = 'This Field is required';
+			}
+		},
+		validatePasswordRepeat(){
+			this.errors.password_repeat = '';
+			if (!this.form.password_repeat) {
+				this.errors.password_repeat = 'This Field is required';
+			} else if (this.form.password_repeat !== this.form.password) {
+				this.errors.password_repeat = 'This repeat Password should be the same as the passwords';
+			}
+		},
+	}))
 });
