@@ -6,51 +6,53 @@
     <title>Document</title>
     <link rel="stylesheet" href="/dist/output.css" />
 
-    <script defer src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"></script>
-		<script src="app.js"></script>
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"
+    ></script>
+    <script src="app.js"></script>
 
-		<style>
-			[x-cloak] {
-				display: none !important;
-			}
-		</style>
+    <style>
+      [x-cloak] {
+        display: none !important;
+      }
+    </style>
   </head>
   <body x-data="productItem" class="bg-gray-200">
     <header
-			x-data="{mobileMenuOpen: false}"
-			class="flex justify-between bg-slate-800 text-white px-4"
-		>
+      x-data="{mobileMenuOpen: false}"
+      class="flex justify-between bg-slate-800 text-white px-4"
+    >
       <div>
         <a class="block py-navbar-item" href="/src"> Logo </a>
-			</div>
-			<!-- Mobile header -->
-			<div
-				class="block fixed z-20 top-0 bottom-0 h-full w-[220px] bg-slate-900 shadow-2xl transition-all md:hidden"
-				:class="mobileMenuOpen ? 'left-0' : '-left-[220px]'"
-			>
-				<ul class="">
+      </div>
+      <!-- Mobile header -->
+      <div
+        class="block fixed z-20 top-0 bottom-0 h-full w-[220px] bg-slate-900 shadow-2xl transition-all md:hidden"
+        :class="mobileMenuOpen ? 'left-0' : '-left-[220px]'"
+      >
+        <ul class="">
           <li>
             <a
               class="flex items-center py-2 px-navbar-item transition-all hover:bg-slate-700"
               href="/src/index.html"
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke-width="1.5"
-								stroke="currentColor"
-								class="w-5 h-5 mr-2"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-								/>
-							</svg>						
-							Home
-						</a
             >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-5 h-5 mr-2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+                />
+              </svg>
+              Home
+            </a>
           </li>
           <li>
             <a
@@ -66,44 +68,41 @@
               >Somethings</a
             >
           </li>
-				</ul>
-				<ul class="">
+        </ul>
+        <ul class="">
           <li>
             <a
               class="flex items-center justify-between py-2 px-navbar-item transition-all hover:bg-slate-700"
               href="/src/cart.html"
-						>
-							<div class="flex items-center">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke-width="1.5"
-									stroke="currentColor"
-									class="w-6 h-6 mr-2"
-								>
-									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
-									/>
-								</svg>
-								Card
-							</div>
-							<small
-								x-show="$store.header.cartItems"
-								x-text="$store.header.cartItems"
-								x-transition
-								class="py-[2px] px-[8px] rounded-full bg-red-500"
-							></small>
+            >
+              <div class="flex items-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6 mr-2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+                  />
+                </svg>
+                Card
+              </div>
+              <small
+                x-show="$store.header.cartItems"
+                x-text="$store.header.cartItems"
+                x-transition
+                class="py-[2px] px-[8px] rounded-full bg-red-500"
+              ></small>
             </a>
           </li>
-					<li
-						x-data="{open: false}"
-						class="relative"
-					>
-						<a
-							@click="open = !open"
+          <li x-data="{open: false}" class="relative">
+            <a
+              @click="open = !open"
               class="cursor-pointer flex justify-between items-center py-2 px-navbar-item transition-all hover:bg-slate-700"
             >
               My Account
@@ -142,13 +141,13 @@
                       d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
                     />
                   </svg>
-									Watchlist
-									<small
-										x-show="$store.header.watchlistItems"
-										x-text="$store.header.watchlistItems"
-										x-transition
-										class="py-[2px] px-[8px] rounded-full bg-red-500"
-									></small>
+                  Watchlist
+                  <small
+                    x-show="$store.header.watchlistItems"
+                    x-text="$store.header.watchlistItems"
+                    x-transition
+                    class="py-[2px] px-[8px] rounded-full bg-red-500"
+                  ></small>
                 </a>
               </li>
               <li>
@@ -242,10 +241,7 @@
             </a>
           </li>
           <li class="px-3">
-            <a
-              class="flex items-center btn-emerald"
-              href="/src/signup.html"
-            >
+            <a class="flex items-center btn-emerald" href="/src/signup.html">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -264,33 +260,32 @@
             </a>
           </li>
         </ul>
-			</div>
-			<!--/ Mobile header -->
-			<!-- Navbar -->
+      </div>
+      <!--/ Mobile header -->
+      <!-- Navbar -->
       <nav class="hidden md:block">
         <ul class="grid grid-flow-col">
           <li>
             <a
               class="flex items-center py-navbar-item px-navbar-item hover:bg-slate-700"
               href="/src/index.html"
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								fill="none"
-								viewBox="0 0 24 24"
-								stroke-width="1.5"
-								stroke="currentColor"
-								class="w-6 h-6 mr-2"
-							>
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-								/>
-							</svg>
-							Home
-						</a
             >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6 mr-2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+                />
+              </svg>
+              Home
+            </a>
           </li>
           <li>
             <a
@@ -329,19 +324,19 @@
                   d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
                 />
               </svg>
-							Card
-							<small
-								x-show="$store.header.cartItems"
-								x-text="$store.header.cartItems"
-								x-cloak
-								x-transition
-								class=" absolute z-[100] py-[2px] px-[8px] top-4 -right-3 rounded-full bg-red-500"
-							></small>
+              Card
+              <small
+                x-show="$store.header.cartItems"
+                x-text="$store.header.cartItems"
+                x-cloak
+                x-transition
+                class="absolute z-[100] py-[2px] px-[8px] top-4 -right-3 rounded-full bg-red-500"
+              ></small>
             </a>
           </li>
           <li x-data="{open: false}" class="relative">
-						<a
-							@click="open = !open"
+            <a
+              @click="open = !open"
               class="cursor-pointer flex items-center py-navbar-item px-navbar-item hover:bg-slate-700"
             >
               My Account
@@ -360,41 +355,41 @@
                 />
               </svg>
             </a>
-						<ul
-							@click.outside="open = false"
-							x-show="open"
-							x-transition
-							x-cloak
-							class="absolute z-10 w-36 bg-slate-800 right-0 py-2"
-						>
+            <ul
+              @click.outside="open = false"
+              x-show="open"
+              x-transition
+              x-cloak
+              class="absolute z-10 w-36 bg-slate-800 right-0 py-2"
+            >
               <li>
                 <a
                   class="flex items-center justify-between py-2 px-3 hover:bg-slate-700"
                   href="/src/watchlist.html"
-								>
-									<div class="flex items-center">
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											fill="none"
-											viewBox="0 0 24 24"
-											stroke-width="1.5"
-											stroke="currentColor"
-											class="w-5 h-5 mr-2"
-										>
-											<path
-												stroke-linecap="round"
-												stroke-linejoin="round"
-												d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
-											/>
-										</svg>
-										Watchlist
-									</div>
-									<small
-										x-show="$store.header.watchlistItems"
-										x-text="$store.header.watchlistItems"
-										x-transition
-										class="py-[2px] px-[8px] rounded-full bg-red-500"
-									></small>
+                >
+                  <div class="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-5 h-5 mr-2"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+                      />
+                    </svg>
+                    Watchlist
+                  </div>
+                  <small
+                    x-show="$store.header.watchlistItems"
+                    x-text="$store.header.watchlistItems"
+                    x-transition
+                    class="py-[2px] px-[8px] rounded-full bg-red-500"
+                  ></small>
                 </a>
               </li>
               <li>
@@ -488,10 +483,7 @@
             </a>
           </li>
           <li>
-            <a
-              class="flex items-center btn-emerald"
-              href="/src/signup.html"
-            >
+            <a class="flex items-center btn-emerald" href="/src/signup.html">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -510,12 +502,12 @@
             </a>
           </li>
         </ul>
-			</nav>
-			<!--/ Navbar -->
-			<button
-				@click="mobileMenuOpen = !mobileMenuOpen"
-				class="p-4 block md:hidden"
-			>
+      </nav>
+      <!--/ Navbar -->
+      <button
+        @click="mobileMenuOpen = !mobileMenuOpen"
+        class="p-4 block md:hidden"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -531,280 +523,301 @@
           />
         </svg>
       </button>
-		</header>
+    </header>
 
-		<!-- Product Item -->
-		<div class="grid grid-cols-1 md:grid-cols-5 gap-6 p-5">
-			<div class="md:col-span-3">
-				<div class="flex items-center justify-center aspect-square">
-					<img src="/src/assets/images/1_1.jpg" alt="" />
-				</div>
-				<div class="flex relative">
-					<a href="#" class="flex items-center text-white absolute z-10 top-0 left-0 h-full bg-black/10 hover:bg-black/20">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 24 24"
-							fill="currentColor"
-							class="w-6 h-6"
-						>
-							<path
-								fill-rule="evenodd"
-								d="M7.72 12.53a.75.75 0 010-1.06l7.5-7.5a.75.75 0 111.06 1.06L9.31 12l6.97 6.97a.75.75 0 11-1.06 1.06l-7.5-7.5z"
-								clip-rule="evenodd"
-							/>
-						</svg>						
-					</a>
-					<a href="#" class="flex items-center text-white absolute z-10 top-0 right-0 h-full bg-black/10 hover:bg-black/20">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 24 24"
-							fill="currentColor"
-							class="w-6 h-6"
-						>
-							<path
-								fill-rule="evenodd"
-								d="M16.28 11.47a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 01-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 011.06-1.06l7.5 7.5z"
-								clip-rule="evenodd"
-							/>
-						</svg>						
-					</a>
-					<a class="flex items-center justify-center border border-gray-200 transition-colors hover:border-purple-600" href="#">
-						<img
-							class="w-16"
-							src="/src/assets/images/1_1.jpg"
-							alt=""
-						/>
-					</a>
-					<a class="flex items-center justify-center border border-gray-200 transition-colors hover:border-purple-600" href="#">
-						<img
-							class="w-16"
-							src="/src/assets/images/1_2.jpg"
-							alt=""
-						/>
-					</a>
-					<a class="flex items-center justify-center border border-gray-200 transition-colors hover:border-purple-600" href="#">
-						<img
-							class="w-16"
-							src="/src/assets/images/1_3.jpg"
-							alt=""
-						/>
-					</a>
-					<a class="flex items-center justify-center border border-gray-200 transition-colors hover:border-purple-600" href="#">
-						<img
-							class="w-16"
-							src="/src/assets/images/1_4.jpg"
-							alt=""
-						/>
-					</a>
-				</div>
-			</div>
-			<div class="md:col-span-2">
-				<h1 class="text-lg font-semibold">
-					Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K
-					Sensor, 25,600 DPI, RGB, Adjustable Weights, 11
-				</h1>
-				<p class="text-xl font-bold mb-3">
-					$19.99
-				</p>
-				<div class="flex items-center mb-3">
-					<p class="flex items-center text-orange-">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 24 24"
-							fill="currentColor"
-							class="w-6 h-6"
-						>
-							<path
-								fill-rule="evenodd"
-								d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-								clip-rule="evenodd"
-							/>
-						</svg>					
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 24 24"
-							fill="currentColor"
-							class="w-6 h-6"
-						>
-							<path
-								fill-rule="evenodd"
-								d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-								clip-rule="evenodd"
-							/>
-						</svg>					
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 24 24"
-							fill="currentColor"
-							class="w-6 h-6"
-						>
-							<path
-								fill-rule="evenodd"
-								d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-								clip-rule="evenodd"
-							/>
-						</svg>					
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							viewBox="0 0 24 24"
-							fill="currentColor"
-							class="w-6 h-6"
-						>
-							<path
-								fill-rule="evenodd"
-								d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
-								clip-rule="evenodd"
-							/>
-						</svg>					
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke-width="1.5"
-							stroke="currentColor"
-							class="w-5 h-5"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
-							/>
-						</svg>					
-					</p>
-					<a class="ml-3 text-purple-700 hover:text-purple-600" href="#">64 Reviews</a>
-				</div>
-				<div class="flex justify-between items-center mb-3">
-					<label for="quantity">Quantity</label>
-					<input
-						type="number"
+    <!-- Product Item -->
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-6 p-5">
+      <div class="md:col-span-3">
+        <div
+          x-data="{
+  images: ['assets/images/1_1.jpg', 'assets/images/1_2.jpg', 'assets/images/1_3.jpg', 'assets/images/1_4.jpg'],
+  activeImage: null,
+  prev() {
+      let index = this.images.indexOf(this.activeImage);
+      if (index === 0) 
+          index = this.images.length;
+      this.activeImage = this.images[index - 1];
+  },
+  next() {
+      let index = this.images.indexOf(this.activeImage);
+      if (index === this.images.length - 1) 
+          index = -1;
+      this.activeImage = this.images[index + 1];
+  },
+  init() {
+      this.activeImage = this.images.length > 0 ? this.images[0] : null
+  }
+}"
+        >
+          <div class="relative">
+            <template x-for="image in images">
+              <div
+                x-show="activeImage === image"
+                class="aspect-w-3 aspect-h-2"
+              >
+                <img :src="image" alt="" class="object-cover" />
+              </div>
+            </template>
+            <a
+              @click.prevent="prev"
+              class="cursor-pointer bg-black/30 text-white absolute left-0 top-1/2 -translate-y-1/2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-10 w-10"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15 19l-7-7 7-7"
+                />
+              </svg>
+            </a>
+            <a
+              @click.prevent="next"
+              class="cursor-pointer bg-black/30 text-white absolute right-0 top-1/2 -translate-y-1/2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-10 w-10"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </a>
+          </div>
+          <div class="flex">
+            <template x-for="image in images">
+              <a
+                @click.prevent="activeImage = image"
+                class="cursor-pointer w-[80px] border border-gray-300 hover:border-purple-500 flex items-center justify-center"
+                :class="{'border-purple-600': activeImage === image}"
+              >
+                <img :src="image" alt="" class="object-cover" />
+              </a>
+            </template>
+          </div>
+        </div>
+      </div>
+      <div class="md:col-span-2">
+        <h1 class="text-lg font-semibold">
+          Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K
+          Sensor, 25,600 DPI, RGB, Adjustable Weights, 11
+        </h1>
+        <p class="text-xl font-bold mb-3">$19.99</p>
+        <div class="flex items-center mb-3">
+          <p class="flex items-center text-orange-">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-5 h-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+              />
+            </svg>
+          </p>
+          <a class="ml-3 text-purple-700 hover:text-purple-600" href="#"
+            >64 Reviews</a
+          >
+        </div>
+        <div class="flex justify-between items-center mb-3">
+          <label for="quantity">Quantity</label>
+          <input
+            type="number"
             name="quantity"
             x-ref="quantityElement"
-						class="py-2 px-3 border-gray-300 rounded w-24 focus:border-purple-600 focus:ring-purple-600"
-						value="1"
-					/>
-				</div>
-				<button @click="addToCart($refs.quantityElement.value)" class="flex justify-center items-center btn-primary w-full">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke-width="1.5"
-						stroke="currentColor"
-						class="w-6 h-6 mr-2"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
-						/>
-					</svg>	
-					Add to Cart
-				</button>
+            class="py-2 px-3 border-gray-300 rounded w-24 focus:border-purple-600 focus:ring-purple-600"
+            value="1"
+          />
+        </div>
+        <button
+          @click="addToCart($refs.quantityElement.value)"
+          class="flex justify-center items-center btn-primary w-full"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6 mr-2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+            />
+          </svg>
+          Add to Cart
+        </button>
 
-				<hr class="my-5 border border-white" />
+        <hr class="my-5 border border-white" />
 
-				<div class="wysiwyg-editor">
-					<table>
-						<tbody>
-							<tr>
-								<td>Connectivity Technology</td>
-								<td>USB</td>
-							</tr>
-							<tr>
-								<td>Recommended Uses For Product</td>
-								<td>Gaming</td>
-							</tr>
-							<tr>
-								<td>Brand</td>
-								<td>Logitech G</td>
-							</tr>
-							<tr>
-								<td>Compatible Devices</td>
-								<td>Personal Computer</td>
-							</tr>
-							<tr>
-								<td>Series</td>
-								<td>Logitech G502 HERO High Performance Gaming Mouse</td>
-							</tr>
-						</tbody>
-					</table>
+        <div class="wysiwyg-editor">
+          <table>
+            <tbody>
+              <tr>
+                <td>Connectivity Technology</td>
+                <td>USB</td>
+              </tr>
+              <tr>
+                <td>Recommended Uses For Product</td>
+                <td>Gaming</td>
+              </tr>
+              <tr>
+                <td>Brand</td>
+                <td>Logitech G</td>
+              </tr>
+              <tr>
+                <td>Compatible Devices</td>
+                <td>Personal Computer</td>
+              </tr>
+              <tr>
+                <td>Series</td>
+                <td>Logitech G502 HERO High Performance Gaming Mouse</td>
+              </tr>
+            </tbody>
+          </table>
 
-					<p class="">
-						Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-						Deserunt suscipit natus quisquam optio voluptatem quo beatae ex
-						similique, pariatur laborum asperiores explicabo delectus culpa
-						cumque corrupti quasi incidunt at quos!
-					</p>
-					<h4>About the item</h4>
-					<ul class="list-disc pl-6">
-						<li>
-							Hero 25K sensor through a software update from G HUB, this
-							upgrade is free to all players: Our most advanced, with 1:1
-							tracking, 400-plus ips, and 100 - 25,600 max dpi sensitivity
-							plus zero smoothing, filtering, or acceleration
-						</li>
-						<li>
-							11 customizable buttons and onboard memory: Assign custom
-							commands to the buttons and save up to five ready to play
-							profiles directly to the mouse
-						</li>
-						<li>
-							Adjustable weight system: Arrange up to five removable 3.6
-							grams weights inside the mouse for personalized weight and
-							balance tuning
-						</li>
-						<li>
-							Programmable RGB Lighting and Lightsync technology: Customize
-							lighting from nearly 16.8 million colors to match your team's
-							colors, sport your own or sync colors with other Logitech G
-							gear
-						</li>
-						<li>
-							Mechanical switch button tensioning: Metal spring tensioning
-							system and pivot hinges are built into left and right gaming
-							mouse buttons for a crisp, clean click feel with rapid click
-							feedback
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
+          <p class="">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt
+            suscipit natus quisquam optio voluptatem quo beatae ex similique,
+            pariatur laborum asperiores explicabo delectus culpa cumque corrupti
+            quasi incidunt at quos!
+          </p>
+          <h4>About the item</h4>
+          <ul class="list-disc pl-6">
+            <li>
+              Hero 25K sensor through a software update from G HUB, this upgrade
+              is free to all players: Our most advanced, with 1:1 tracking,
+              400-plus ips, and 100 - 25,600 max dpi sensitivity plus zero
+              smoothing, filtering, or acceleration
+            </li>
+            <li>
+              11 customizable buttons and onboard memory: Assign custom commands
+              to the buttons and save up to five ready to play profiles directly
+              to the mouse
+            </li>
+            <li>
+              Adjustable weight system: Arrange up to five removable 3.6 grams
+              weights inside the mouse for personalized weight and balance
+              tuning
+            </li>
+            <li>
+              Programmable RGB Lighting and Lightsync technology: Customize
+              lighting from nearly 16.8 million colors to match your team's
+              colors, sport your own or sync colors with other Logitech G gear
+            </li>
+            <li>
+              Mechanical switch button tensioning: Metal spring tensioning
+              system and pivot hinges are built into left and right gaming mouse
+              buttons for a crisp, clean click feel with rapid click feedback
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <!--/ Product Item -->
     <!-- Toast -->
-		<div
-    x-data="toast"
-    x-show="visible"
-    x-transition
-    x-cloak
-    @notify.window="show($event.detail.message)"
-    class="fixed w-[400px] left-1/2 -ml-[200px] top-16 py-2 px-4 pb-4 bg-emerald-500 text-white"
-  >
-    <div class="font-semibold" x-text="message"></div>
-    <button
-      @click="close"
-      class="fixed flex items-center justify-center right-2 top-2 w-[30px] h-[30px] rounded-full hover:bg-black/10 transition-colors"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        stroke-width="2"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M6 18L18 6M6 6l12 12"
-        />
-      </svg>
-    </button>
-    <!-- Progress -->
     <div
-      class="absolute left-0 bottom-0 right-0 h-[6px] bg-black/10"
-      :style="{'width': `${percent}%`}"
-    ></div>
-  </div>
-  <!--/ Toast -->
+      x-data="toast"
+      x-show="visible"
+      x-transition
+      x-cloak
+      @notify.window="show($event.detail.message)"
+      class="fixed w-[400px] left-1/2 -ml-[200px] top-16 py-2 px-4 pb-4 bg-emerald-500 text-white"
+    >
+      <div class="font-semibold" x-text="message"></div>
+      <button
+        @click="close"
+        class="fixed flex items-center justify-center right-2 top-2 w-[30px] h-[30px] rounded-full hover:bg-black/10 transition-colors"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+      <!-- Progress -->
+      <div
+        class="absolute left-0 bottom-0 right-0 h-[6px] bg-black/10"
+        :style="{'width': `${percent}%`}"
+      ></div>
+    </div>
+    <!--/ Toast -->
   </body>
 </html>
