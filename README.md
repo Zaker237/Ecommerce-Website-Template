@@ -8,3 +8,5 @@ Tis template is implemented using:
 * [heroicons](https://heroicons.com/)
 
 And it's full responsible
+
+![view](https://user-images.githubusercontent.com/49993443/215626760-c90144b1-87e8-4f8d-90d4-c951a6b0ac7b.gif)
