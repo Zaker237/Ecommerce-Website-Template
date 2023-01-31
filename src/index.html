@@ -4,14 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/dist/output.css" />
+		<link rel="stylesheet" href="/dist/output.css" />
+
+		<!-- Alpine Plugins -->
+		<script
+			defer
+			src="https://unpkg.com/@alpinejs/persist@3.10.2/dist/cdn.min.js"
+		></script>
+
+		<script
+      defer
+      src="app.js"
+		></script>
+
+		<script
+			defer
+			src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"
+		></script>
+
+		<style>
+			[x-cloak] {
+				display: none !important;
+			}
+		</style>
   </head>
   <body class="bg-gray-200">
-    <header class="flex justify-between bg-slate-800 text-white px-4">
+		<header
+			x-data="{mobileMenuOpen: false}"
+			class="flex justify-between bg-slate-800 text-white px-4"
+		>
       <div>
         <a class="block py-navbar-item" href="/src"> Logo </a>
 			</div>
-			<div class="block fixed z-20 top-0 left-[-220px] bottom-0 h-full w-[220px] bg-slate-900 shadow-2xl transition-all md:hidden">
+			<!-- Mobile header -->
+			<div
+				class="block fixed z-20 top-0 bottom-0 h-full w-[220px] bg-slate-900 shadow-2xl transition-all md:hidden"
+				:class="mobileMenuOpen ? 'left-0' : '-left-[220px]'"
+			>
 				<ul class="">
           <li>
             <a
@@ -54,30 +83,41 @@
 				<ul class="">
           <li>
             <a
-              class="flex items-center py-2 px-navbar-item transition-all hover:bg-slate-700"
+              class="flex items-center justify-between py-2 px-navbar-item transition-all hover:bg-slate-700"
               href="/src/cart.html"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-6 h-6 mr-2"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
-                />
-              </svg>
-              Card
+						>
+							<div class="flex items-center">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke-width="1.5"
+									stroke="currentColor"
+									class="w-6 h-6 mr-2"
+								>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+									/>
+								</svg>
+								Card
+							</div>
+							<small
+								x-show="$store.header.cartItems"
+								x-text="$store.header.cartItems"
+								x-transition
+								class="py-[2px] px-[8px] rounded-full bg-red-500"
+							></small>
             </a>
           </li>
-          <li class="relative">
-            <a
-              class="flex justify-between items-center py-2 px-navbar-item transition-all hover:bg-slate-700"
-              href="#"
+					<li
+						x-data="{open: false}"
+						class="relative"
+					>
+						<a
+							@click="open = !open"
+              class="cursor-pointer flex justify-between items-center py-2 px-navbar-item transition-all hover:bg-slate-700"
             >
               My Account
               <svg
@@ -95,7 +135,7 @@
                 />
               </svg>
             </a>
-            <ul class="w-full bg-slate-800 py-2">
+            <ul x-show="open" x-transition class="w-full bg-slate-800 py-2">
               <li>
                 <a
                   class="flex items-center py-1 px-4 hover:bg-slate-700"
@@ -115,7 +155,13 @@
                       d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
                     />
                   </svg>
-                  Watchlist
+									Watchlist
+									<small
+										x-show="$store.header.watchlistItems"
+										x-text="$store.header.watchlistItems"
+										x-transition
+										class="py-[2px] px-[8px] rounded-full bg-red-500"
+									></small>
                 </a>
               </li>
               <li>
@@ -232,6 +278,8 @@
           </li>
         </ul>
 			</div>
+			<!--/ Mobile header -->
+			<!-- Navbar -->
       <nav class="hidden md:block">
         <ul class="grid grid-flow-col">
           <li>
@@ -277,7 +325,7 @@
         <ul class="grid grid-flow-col items-center">
           <li>
             <a
-              class="flex items-center py-navbar-item px-navbar-item hover:bg-slate-700"
+              class="relative flex items-center py-navbar-item px-navbar-item hover:bg-slate-700"
               href="/src/cart.html"
             >
               <svg
@@ -294,13 +342,20 @@
                   d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
                 />
               </svg>
-              Card
+							Card
+							<small
+								x-show="$store.header.cartItems"
+								x-text="$store.header.cartItems"
+								x-cloak
+								x-transition
+								class=" absolute z-[100] py-[2px] px-[8px] top-4 -right-3 rounded-full bg-red-500"
+							></small>
             </a>
           </li>
-          <li class="relative">
-            <a
-              class="flex items-center py-navbar-item px-navbar-item hover:bg-slate-700"
-              href="#"
+          <li x-data="{open: false}" class="relative">
+						<a
+							@click="open = !open"
+              class="cursor-pointer flex items-center py-navbar-item px-navbar-item hover:bg-slate-700"
             >
               My Account
               <svg
@@ -318,27 +373,41 @@
                 />
               </svg>
             </a>
-            <ul class="absolute z-10 w-36 bg-slate-800 right-0 py-2">
+						<ul
+							@click.outside="open = false"
+							x-show="open"
+							x-transition
+							x-cloak
+							class="absolute z-10 w-36 bg-slate-800 right-0 py-2"
+						>
               <li>
                 <a
-                  class="flex items-center py-1 px-4 hover:bg-slate-700"
+                  class="flex items-center justify-between py-2 px-3 hover:bg-slate-700"
                   href="/src/watchlist.html"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="w-5 h-5 mr-2"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
-                    />
-                  </svg>
-                  Watchlist
+								>
+									<div class="flex items-center">
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke-width="1.5"
+											stroke="currentColor"
+											class="w-5 h-5 mr-2"
+										>
+											<path
+												stroke-linecap="round"
+												stroke-linejoin="round"
+												d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+											/>
+										</svg>
+										Watchlist
+									</div>
+									<small
+										x-show="$store.header.watchlistItems"
+										x-text="$store.header.watchlistItems"
+										x-transition
+										class="py-[2px] px-[8px] rounded-full bg-red-500"
+									></small>
                 </a>
               </li>
               <li>
@@ -454,8 +523,12 @@
             </a>
           </li>
         </ul>
-      </nav>
-      <button class="block md:hidden">
+			</nav>
+			<!--/ Navbar -->
+			<button
+				@click="mobileMenuOpen = !mobileMenuOpen"
+				class="p-4 block md:hidden"
+			>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -476,26 +549,35 @@
 		<!--Product List-->
 		<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 p-5">
 			<!-- Product Item -->
-			<div class="bg-white rounded-md overflow-hidden shadow border border-gray-300 transition-colors hover:border-purple-600">
+			<div
+				x-data="productItem(
+					{
+						id: 1,
+						image: 'assets/images/1_1.jpg',
+						title: 'Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K Sensor, 25,600 DPI, RGB, Adjustable Weights, 11',
+						price: 17.99,
+					}
+				)"
+				class="bg-white rounded-md overflow-hidden shadow border border-gray-300 transition-colors hover:border-purple-600"
+			>
 				<a href="/src/product.html">
 					<img
 						class="rounded-t-md transition hover:scale-105 hover:rotate-1"
-						src="/src//assets//images/1_1.jpg"
+						:src="product.image"
 						alt=""
 					/>
 				</a>
 				<div class="p-3">
 					<h3>
-						<a class="text-black font-semibold hover:text-gray-600" href="/src/product.html">
-							Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K
-							Sensor, 25,600 DPI, RGB, Adjustable Weights, 11
-						</a>
+						<a class="text-black font-semibold hover:text-gray-600" href="/src/product.html" x-text="product.title"></a>
 					</h3>
-					<p class="text-xl font-bold">$19.99</p>
+					<p class="text-xl font-bold">$<span x-text="product.price"></span></p>
 					<div class="flex justify-between mt-3">
 						<button
-							class="flex items-center justify-center w-10 h-10 text-purple-700 hover:text-white hover:bg-purple-700 rounded-full
+							@click="addToWatchlist()"
+							class="flex items-center justify-center w-10 h-10 hover:text-white hover:bg-purple-700 rounded-full
 										 transition-colors border-2 border-purple-700 active:bg-purple-800"
+							:class="isInWatchlist() ? 'bg-purple-700 text-white' : 'text-purple-700'"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -513,9 +595,9 @@
 							</svg>							
 						</button>
 						<button
-							class="flex items-center bg-purple-600 text-white py-2 px-3 rounded transition-colors 
-									 hover:bg-purple-700 active:bg-purple-800 shadow-md"
-							>
+							@click="addToCart(product.id)"
+							class="flex items-center btn-primary"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -537,26 +619,35 @@
 			</div>
 			<!-- Product Item -->
 			<!-- Product Item -->
-			<div class="bg-white rounded-md overflow-hidden shadow border border-gray-300 transition-colors hover:border-purple-600">
+			<div
+			x-data="productItem(
+				{
+					id: 2,
+					image: 'assets/images/1_3.jpg',
+					title: 'Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K Sensor, 25,600 DPI, RGB, Adjustable Weights, 11',
+					price: 17.99,
+				}
+			)"
+				class="bg-white rounded-md overflow-hidden shadow border border-gray-300 transition-colors hover:border-purple-600"
+			>
 				<a href="/src/product.html">
 					<img
 						class="rounded-t-md transition hover:scale-105 hover:rotate-1"
-						src="/src//assets//images/1_1.jpg"
+						:src="product.image"
 						alt=""
 					/>
 				</a>
 				<div class="p-3">
 					<h3>
-						<a class="text-black font-semibold hover:text-gray-600" href="/src/product.html">
-							Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K
-							Sensor, 25,600 DPI, RGB, Adjustable Weights, 11
-						</a>
+						<a class="text-black font-semibold hover:text-gray-600" href="/src/product.html" x-text="product.title"></a>
 					</h3>
-					<p class="text-xl font-bold">$19.99</p>
+					<p class="text-xl font-bold">$<span x-text="product.title"></span></p>
 					<div class="flex justify-between mt-3">
 						<button
-							class="flex items-center justify-center w-10 h-10 text-purple-700 hover:text-white hover:bg-purple-700 rounded-full
+							@click="addToWatchlist()"
+							class="flex items-center justify-center w-10 h-10 hover:text-white hover:bg-purple-700 rounded-full
 										 transition-colors border-2 border-purple-700 active:bg-purple-800"
+										 :class="isInWatchlist() ? 'bg-purple-700 text-white' : 'text-purple-700'"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -574,9 +665,9 @@
 							</svg>							
 						</button>
 						<button
-							class="flex items-center bg-purple-600 text-white py-2 px-3 rounded transition-colors 
-									 hover:bg-purple-700 active:bg-purple-800 shadow-md"
-							>
+							@click="addToCart(product.id)"
+							class="flex items-center btn-primary"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -598,26 +689,34 @@
 			</div>
 			<!-- Product Item -->
 			<!-- Product Item -->
-			<div class="bg-white rounded-md overflow-hidden shadow border border-gray-300 transition-colors hover:border-purple-600">
+			<div
+			x-data="productItem(
+				{
+					id: 3,
+					image: 'assets/images/1_4.jpg',
+					title: 'Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K Sensor, 25,600 DPI, RGB, Adjustable Weights, 11',
+					price: 17.99,
+				}
+			)"
+				class="bg-white rounded-md overflow-hidden shadow border border-gray-300 transition-colors hover:border-purple-600">
 				<a href="/src/product.html">
 					<img
 						class="rounded-t-md transition hover:scale-105 hover:rotate-1"
-						src="/src//assets//images/1_1.jpg"
+						:src="product.image"
 						alt=""
 					/>
 				</a>
 				<div class="p-3">
 					<h3>
-						<a class="text-black font-semibold hover:text-gray-600" href="/src/product.html">
-							Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K
-							Sensor, 25,600 DPI, RGB, Adjustable Weights, 11
-						</a>
+						<a class="text-black font-semibold hover:text-gray-600" href="/src/product.html" x-text="product.title"></a>
 					</h3>
-					<p class="text-xl font-bold">$19.99</p>
+					<p class="text-xl font-bold">$<span x-text="product.price"></span></p>
 					<div class="flex justify-between mt-3">
 						<button
-							class="flex items-center justify-center w-10 h-10 text-purple-700 hover:text-white hover:bg-purple-700 rounded-full
+							@click="addToWatchlist()"
+							class="flex items-center justify-center w-10 h-10 hover:text-white hover:bg-purple-700 rounded-full
 										 transition-colors border-2 border-purple-700 active:bg-purple-800"
+							:class="isInWatchlist() ? 'bg-purple-700 text-white' : 'text-purple-700'"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -635,9 +734,9 @@
 							</svg>							
 						</button>
 						<button
-							class="flex items-center bg-purple-600 text-white py-2 px-3 rounded transition-colors 
-									 hover:bg-purple-700 active:bg-purple-800 shadow-md"
-							>
+							@click="addToCart(product.id)"
+							class="flex items-center btn-primary"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -659,26 +758,35 @@
 			</div>
 			<!-- Product Item -->
 			<!-- Product Item -->
-			<div class="bg-white rounded-md overflow-hidden shadow border border-gray-300 transition-colors hover:border-purple-600">
+			<div
+			x-data="productItem(
+				{
+					id: 4,
+					image: 'assets/images/1_2.jpg',
+					title: 'Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K Sensor, 25,600 DPI, RGB, Adjustable Weights, 11',
+					price: 19.99,
+				}
+			)"
+				class="bg-white rounded-md overflow-hidden shadow border border-gray-300 transition-colors hover:border-purple-600"
+			>
 				<a href="/src/product.html">
 					<img
 						class="rounded-t-md transition hover:scale-105 hover:rotate-1"
-						src="/src//assets//images/1_1.jpg"
+						:src="product.image"
 						alt=""
 					/>
 				</a>
 				<div class="p-3">
 					<h3>
-						<a class="text-black font-semibold hover:text-gray-600" href="/src/product.html">
-							Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K
-							Sensor, 25,600 DPI, RGB, Adjustable Weights, 11
-						</a>
+						<a class="text-black font-semibold hover:text-gray-600" href="/src/product.html" x-text="product.title"></a>
 					</h3>
 					<p class="text-xl font-bold">$19.99</p>
 					<div class="flex justify-between mt-3">
 						<button
-							class="flex items-center justify-center w-10 h-10 text-purple-700 hover:text-white hover:bg-purple-700 rounded-full
+							@click="addToWatchlist()"
+							class="flex items-center justify-center w-10 h-10 hover:text-white hover:bg-purple-700 rounded-full
 										 transition-colors border-2 border-purple-700 active:bg-purple-800"
+							:class="isInWatchlist() ? 'bg-purple-700 text-white' : 'text-purple-700'"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -696,9 +804,9 @@
 							</svg>							
 						</button>
 						<button
-							class="flex items-center bg-purple-600 text-white py-2 px-3 rounded transition-colors 
-									 hover:bg-purple-700 active:bg-purple-800 shadow-md"
-							>
+							@click="addToCart(product.id)"
+							class="flex items-center btn-primary"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -720,26 +828,35 @@
 			</div>
 			<!-- Product Item -->
 			<!-- Product Item -->
-			<div class="bg-white rounded-md overflow-hidden shadow border border-gray-300 transition-colors hover:border-purple-600">
+			<div
+			x-data="productItem(
+				{
+					id: 5,
+					image: 'assets/images/1_3.jpg',
+					title: 'Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K Sensor, 25,600 DPI, RGB, Adjustable Weights, 11',
+					price: 17.99,
+				}
+			)"
+				class="bg-white rounded-md overflow-hidden shadow border border-gray-300 transition-colors hover:border-purple-600"
+			>
 				<a href="/src/product.html">
 					<img
 						class="rounded-t-md transition hover:scale-105 hover:rotate-1"
-						src="/src//assets//images/1_1.jpg"
+						:src="product.image"
 						alt=""
 					/>
 				</a>
 				<div class="p-3">
 					<h3>
-						<a class="text-black font-semibold hover:text-gray-600" href="/src/product.html">
-							Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K
-							Sensor, 25,600 DPI, RGB, Adjustable Weights, 11
-						</a>
+						<a class="text-black font-semibold hover:text-gray-600" href="/src/product.html" x-text="product.image"></a>
 					</h3>
-					<p class="text-xl font-bold">$19.99</p>
+					<p class="text-xl font-bold">$<span x-text="product.price"></span></p>
 					<div class="flex justify-between mt-3">
 						<button
-							class="flex items-center justify-center w-10 h-10 text-purple-700 hover:text-white hover:bg-purple-700 rounded-full
+							@click="addToWatchlist()"
+							class="flex items-center justify-center w-10 h-10 hover:text-white hover:bg-purple-700 rounded-full
 										 transition-colors border-2 border-purple-700 active:bg-purple-800"
+							:class="isInWatchlist() ? 'bg-purple-700 text-white' : 'text-purple-700'"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -757,9 +874,9 @@
 							</svg>							
 						</button>
 						<button
-							class="flex items-center bg-purple-600 text-white py-2 px-3 rounded transition-colors 
-									 hover:bg-purple-700 active:bg-purple-800 shadow-md"
-							>
+							@click="addToCart(product.id)"
+							class="flex items-center btn-primary"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -781,26 +898,35 @@
 			</div>
 			<!-- Product Item -->
 			<!-- Product Item -->
-			<div class="bg-white rounded-md overflow-hidden shadow border border-gray-300 transition-colors hover:border-purple-600">
+			<div
+			x-data="productItem(
+				{
+					id: 1,
+					image: 'assets/images/1_4.jpg',
+					title: 'Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K Sensor, 25,600 DPI, RGB, Adjustable Weights, 11',
+					price: 17.99,
+				}
+			)"
+				class="bg-white rounded-md overflow-hidden shadow border border-gray-300 transition-colors hover:border-purple-600"
+			>
 				<a href="/src/product.html">
 					<img
 						class="rounded-t-md transition hover:scale-105 hover:rotate-1"
-						src="/src//assets//images/1_1.jpg"
+						:src="product.image"
 						alt=""
 					/>
 				</a>
 				<div class="p-3">
 					<h3>
-						<a class="text-black font-semibold hover:text-gray-600" href="/src/product.html">
-							Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K
-							Sensor, 25,600 DPI, RGB, Adjustable Weights, 11
-						</a>
+						<a class="text-black font-semibold hover:text-gray-600" href="/src/product.html" x-text="product.title"></a>
 					</h3>
-					<p class="text-xl font-bold">$19.99</p>
+					<p class="text-xl font-bold">$<span x-text="product.price"></span>></p>
 					<div class="flex justify-between mt-3">
 						<button
-							class="flex items-center justify-center w-10 h-10 text-purple-700 hover:text-white hover:bg-purple-700 rounded-full
+							@click="addToWatchlist()"
+							class="flex items-center justify-center w-10 h-10 hover:text-white hover:bg-purple-700 rounded-full
 										 transition-colors border-2 border-purple-700 active:bg-purple-800"
+							:class="isInWatchlist() ? 'bg-purple-700 text-white' : 'text-purple-700'"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -818,9 +944,9 @@
 							</svg>							
 						</button>
 						<button
-							class="flex items-center bg-purple-600 text-white py-2 px-3 rounded transition-colors 
-									 hover:bg-purple-700 active:bg-purple-800 shadow-md"
-							>
+							@click="addToCart(product.id)"
+							class="flex items-center btn-primary"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -842,26 +968,35 @@
 			</div>
 			<!-- Product Item -->
 			<!-- Product Item -->
-			<div class="bg-white rounded-md overflow-hidden shadow border border-gray-300 transition-colors hover:border-purple-600">
+			<div
+			x-data="productItem(
+				{
+					id: 7,
+					image: 'assets/images/1_1.jpg',
+					title: 'Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K Sensor, 25,600 DPI, RGB, Adjustable Weights, 11',
+					price: 17.99,
+				}
+			)"
+				class="bg-white rounded-md overflow-hidden shadow border border-gray-300 transition-colors hover:border-purple-600"
+			>
 				<a href="/src/product.html">
 					<img
 						class="rounded-t-md transition hover:scale-105 hover:rotate-1"
-						src="/src//assets//images/1_1.jpg"
+						:src="product.image"
 						alt=""
 					/>
 				</a>
 				<div class="p-3">
 					<h3>
-						<a class="text-black font-semibold hover:text-gray-600" href="/src/product.html">
-							Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K
-							Sensor, 25,600 DPI, RGB, Adjustable Weights, 11
-						</a>
+						<a class="text-black font-semibold hover:text-gray-600" href="/src/product.html" x-text="product.title"></a>
 					</h3>
-					<p class="text-xl font-bold">$19.99</p>
+					<p class="text-xl font-bold">$<span x-text="product.price"></span></p>
 					<div class="flex justify-between mt-3">
 						<button
-							class="flex items-center justify-center w-10 h-10 text-purple-700 hover:text-white hover:bg-purple-700 rounded-full
+							@click="addToWatchlist()"
+							class="flex items-center justify-center w-10 h-10 hover:text-white hover:bg-purple-700 rounded-full
 										 transition-colors border-2 border-purple-700 active:bg-purple-800"
+							:class="isInWatchlist() ? 'bg-purple-700 text-white' : 'text-purple-700'"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -879,9 +1014,9 @@
 							</svg>							
 						</button>
 						<button
-							class="flex items-center bg-purple-600 text-white py-2 px-3 rounded transition-colors 
-									 hover:bg-purple-700 active:bg-purple-800 shadow-md"
-							>
+							@click="addToCart(product.id)"
+							class="flex items-center btn-primary"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -903,26 +1038,35 @@
 			</div>
 			<!-- Product Item -->
 			<!-- Product Item -->
-			<div class="bg-white rounded-md overflow-hidden shadow border border-gray-300 transition-colors hover:border-purple-600">
+			<div
+			x-data="productItem(
+				{
+					id: 8,
+					image: 'assets/images/1_2.jpg',
+					title: 'Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K Sensor, 25,600 DPI, RGB, Adjustable Weights, 11',
+					price: 17.99,
+				}
+			)"
+				class="bg-white rounded-md overflow-hidden shadow border border-gray-300 transition-colors hover:border-purple-600"
+			>
 				<a href="/src/product.html">
 					<img
 						class="rounded-t-md transition hover:scale-105 hover:rotate-1"
-						src="/src//assets//images/1_1.jpg"
+						:src="product.image"
 						alt=""
 					/>
 				</a>
 				<div class="p-3">
 					<h3>
-						<a class="text-black font-semibold hover:text-gray-600" href="/src/product.html">
-							Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K
-							Sensor, 25,600 DPI, RGB, Adjustable Weights, 11
-						</a>
+						<a class="text-black font-semibold hover:text-gray-600" href="/src/product.html" x-text="product.title"></a>
 					</h3>
-					<p class="text-xl font-bold">$19.99</p>
+					<p class="text-xl font-bold">$<span x-text="product.price"></span></p>
 					<div class="flex justify-between mt-3">
 						<button
-							class="flex items-center justify-center w-10 h-10 text-purple-700 hover:text-white hover:bg-purple-700 rounded-full
-										 transition-colors border-2 border-purple-700 active:bg-purple-800"
+						@click="addToWatchlist()"
+						class="flex items-center justify-center w-10 h-10 hover:text-white hover:bg-purple-700 rounded-full
+									 transition-colors border-2 border-purple-700 active:bg-purple-800"
+						:class="isInWatchlist() ? 'bg-purple-700 text-white' : 'text-purple-700'"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -940,9 +1084,9 @@
 							</svg>							
 						</button>
 						<button
-							class="flex items-center bg-purple-600 text-white py-2 px-3 rounded transition-colors 
-									 hover:bg-purple-700 active:bg-purple-800 shadow-md"
-							>
+							@click="addToCart(product.id)"
+							class="flex items-center btn-primary"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -964,26 +1108,34 @@
 			</div>
 			<!-- Product Item -->
 			<!-- Product Item -->
-			<div class="bg-white rounded-md overflow-hidden shadow border border-gray-300 transition-colors hover:border-purple-600">
+			<div
+			x-data="productItem(
+				{
+					id: 9,
+					image: 'assets/images/1_3.jpg',
+					title: 'Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K Sensor, 25,600 DPI, RGB, Adjustable Weights, 11',
+					price: 17.99,
+				}
+			)"
+				class="bg-white rounded-md overflow-hidden shadow border border-gray-300 transition-colors hover:border-purple-600">
 				<a href="/src/product.html">
 					<img
 						class="rounded-t-md transition hover:scale-105 hover:rotate-1"
-						src="/src//assets//images/1_1.jpg"
+						:src="product.image"
 						alt=""
 					/>
 				</a>
 				<div class="p-3">
 					<h3>
-						<a class="text-black font-semibold hover:text-gray-600" href="/src/product.html">
-							Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K
-							Sensor, 25,600 DPI, RGB, Adjustable Weights, 11
-						</a>
+						<a class="text-black font-semibold hover:text-gray-600" href="/src/product.html" x-text="product.title"></a>
 					</h3>
-					<p class="text-xl font-bold">$19.99</p>
+					<p class="text-xl font-bold">$<span x-text="product.price"></span></p>
 					<div class="flex justify-between mt-3">
 						<button
-							class="flex items-center justify-center w-10 h-10 text-purple-700 hover:text-white hover:bg-purple-700 rounded-full
-										 transition-colors border-2 border-purple-700 active:bg-purple-800"
+						@click="addToWatchlist()"
+						class="flex items-center justify-center w-10 h-10 hover:text-white hover:bg-purple-700 rounded-full
+									 transition-colors border-2 border-purple-700 active:bg-purple-800"
+						:class="isInWatchlist() ? 'bg-purple-700 text-white' : 'text-purple-700'"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -1001,9 +1153,9 @@
 							</svg>							
 						</button>
 						<button
-							class="flex items-center bg-purple-600 text-white py-2 px-3 rounded transition-colors 
-									 hover:bg-purple-700 active:bg-purple-800 shadow-md"
-							>
+							@click="addToCart(product.id)"
+							class="flex items-center btn-primary"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -1025,26 +1177,35 @@
 			</div>
 			<!-- Product Item -->
 			<!-- Product Item -->
-			<div class="bg-white rounded-md overflow-hidden shadow border border-gray-300 transition-colors hover:border-purple-600">
+			<div
+			x-data="productItem(
+				{
+					id: 10,
+					image: 'assets/images/1_1.jpg',
+					title: 'Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K Sensor, 25,600 DPI, RGB, Adjustable Weights, 11',
+					price: 17.99,
+				}
+			)"
+				class="bg-white rounded-md overflow-hidden shadow border border-gray-300 transition-colors hover:border-purple-600"
+			>
 				<a href="/src/product.html">
 					<img
 						class="rounded-t-md transition hover:scale-105 hover:rotate-1"
-						src="/src//assets//images/1_1.jpg"
+						:src="product.image"
 						alt=""
 					/>
 				</a>
 				<div class="p-3">
 					<h3>
-						<a class="text-black font-semibold hover:text-gray-600" href="/src/product.html">
-							Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K
-							Sensor, 25,600 DPI, RGB, Adjustable Weights, 11
-						</a>
+						<a class="text-black font-semibold hover:text-gray-600" href="/src/product.html" x-text="product.title"></a>
 					</h3>
-					<p class="text-xl font-bold">$19.99</p>
+					<p class="text-xl font-bold">$<span x-text="product.price"></span></p>
 					<div class="flex justify-between mt-3">
 						<button
-							class="flex items-center justify-center w-10 h-10 text-purple-700 hover:text-white hover:bg-purple-700 rounded-full
-										 transition-colors border-2 border-purple-700 active:bg-purple-800"
+						@click="addToWatchlist()"
+						class="flex items-center justify-center w-10 h-10 hover:text-white hover:bg-purple-700 rounded-full
+									 transition-colors border-2 border-purple-700 active:bg-purple-800"
+						:class="isInWatchlist() ? 'bg-purple-700 text-white' : 'text-purple-700'"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -1062,9 +1223,9 @@
 							</svg>							
 						</button>
 						<button
-							class="flex items-center bg-purple-600 text-white py-2 px-3 rounded transition-colors 
-									 hover:bg-purple-700 active:bg-purple-800 shadow-md"
-							>
+							@click="addToCart(product.id)"
+							class="flex items-center btn-primary"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -1086,26 +1247,35 @@
 			</div>
 			<!-- Product Item -->
 			<!-- Product Item -->
-			<div class="bg-white rounded-md overflow-hidden shadow border border-gray-300 transition-colors hover:border-purple-600">
+			<div
+			x-data="productItem(
+				{
+					id: 11,
+					image: 'assets/images/1_2.jpg',
+					title: 'Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K Sensor, 25,600 DPI, RGB, Adjustable Weights, 11',
+					price: 17.99,
+				}
+			)"
+				class="bg-white rounded-md overflow-hidden shadow border border-gray-300 transition-colors hover:border-purple-600"
+			>
 				<a href="/src/product.html">
 					<img
 						class="rounded-t-md transition hover:scale-105 hover:rotate-1"
-						src="/src//assets//images/1_1.jpg"
+						:src="product.image"
 						alt=""
 					/>
 				</a>
 				<div class="p-3">
 					<h3>
-						<a class="text-black font-semibold hover:text-gray-600" href="/src/product.html">
-							Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K
-							Sensor, 25,600 DPI, RGB, Adjustable Weights, 11
-						</a>
+						<a class="text-black font-semibold hover:text-gray-600" href="/src/product.html" x-text="product.title"></a>
 					</h3>
-					<p class="text-xl font-bold">$19.99</p>
+					<p class="text-xl font-bold">$<span x-text="product.price"></span></p>
 					<div class="flex justify-between mt-3">
 						<button
-							class="flex items-center justify-center w-10 h-10 text-purple-700 hover:text-white hover:bg-purple-700 rounded-full
-										 transition-colors border-2 border-purple-700 active:bg-purple-800"
+						@click="addToWatchlist()"
+						class="flex items-center justify-center w-10 h-10 hover:text-white hover:bg-purple-700 rounded-full
+									 transition-colors border-2 border-purple-700 active:bg-purple-800"
+						:class="isInWatchlist() ? 'bg-purple-700 text-white' : 'text-purple-700'"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -1123,9 +1293,9 @@
 							</svg>							
 						</button>
 						<button
-							class="flex items-center bg-purple-600 text-white py-2 px-3 rounded transition-colors 
-									 hover:bg-purple-700 active:bg-purple-800 shadow-md"
-							>
+							@click="addToCart(product.id)"
+							class="flex items-center btn-primary"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -1147,26 +1317,34 @@
 			</div>
 			<!-- Product Item -->
 			<!-- Product Item -->
-			<div class="bg-white rounded-md overflow-hidden shadow border border-gray-300 transition-colors hover:border-purple-600">
+			<div
+			x-data="productItem(
+				{
+					id: 12,
+					image: 'assets/images/1_4.jpg',
+					title: 'Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K Sensor, 25,600 DPI, RGB, Adjustable Weights, 11',
+					price: 17.99,
+				}
+			)"
+				class="bg-white rounded-md overflow-hidden shadow border border-gray-300 transition-colors hover:border-purple-600">
 				<a href="/src/product.html">
 					<img
 						class="rounded-t-md transition hover:scale-105 hover:rotate-1"
-						src="/src//assets//images/1_1.jpg"
+						:src="product.image"
 						alt=""
 					/>
 				</a>
 				<div class="p-3">
 					<h3>
-						<a class="text-black font-semibold hover:text-gray-600" href="/src/product.html">
-							Logitech G502 HERO High Performance Wired Gaming Mouse, HERO 25K
-							Sensor, 25,600 DPI, RGB, Adjustable Weights, 11
-						</a>
+						<a class="text-black font-semibold hover:text-gray-600" href="/src/product.html" x-text="product.title"></a>
 					</h3>
-					<p class="text-xl font-bold">$19.99</p>
+					<p class="text-xl font-bold">$<span x-text="product.price"></span></p>
 					<div class="flex justify-between mt-3">
 						<button
-							class="flex items-center justify-center w-10 h-10 text-purple-700 hover:text-white hover:bg-purple-700 rounded-full
-										 transition-colors border-2 border-purple-700 active:bg-purple-800"
+						@click="addToWatchlist()"
+						class="flex items-center justify-center w-10 h-10 hover:text-white hover:bg-purple-700 rounded-full
+									 transition-colors border-2 border-purple-700 active:bg-purple-800"
+						:class="isInWatchlist() ? 'bg-purple-700 text-white' : 'text-purple-700'"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -1184,9 +1362,9 @@
 							</svg>							
 						</button>
 						<button
-							class="flex items-center bg-purple-600 text-white py-2 px-3 rounded transition-colors 
-									 hover:bg-purple-700 active:bg-purple-800 shadow-md"
-							>
+							@click="addToCart(product.id)"
+							class="flex items-center btn-primary"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								fill="none"
@@ -1209,5 +1387,41 @@
 			<!-- Product Item -->
 		</div>
 		<!--/ Product List-->
+		<!-- Toast -->
+		<div
+			x-data="toast"
+      x-show="visible"
+      x-transition
+			x-cloak
+			@notify.window="show($event.detail.message)"
+			class="fixed w-[400px] left-1/2 -ml-[200px] top-16 py-2 px-4 pb-4 bg-emerald-500 text-white"
+    >
+      <div class="font-semibold" x-text="message"></div>
+      <button
+        @click="close"
+        class="fixed flex items-center justify-center right-2 top-2 w-[30px] h-[30px] rounded-full hover:bg-black/10 transition-colors"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+      <!-- Progress -->
+      <div
+				class="absolute left-0 bottom-0 right-0 h-[6px] bg-black/10"
+        :style="{'width': `${percent}%`}"
+      ></div>
+    </div>
+		<!--/ Toast -->
   </body>
 </html>
