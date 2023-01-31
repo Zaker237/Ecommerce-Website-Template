@@ -549,37 +549,77 @@
 		<div class="w-full sm:w-[400px] px-5 mx-auto mt-15 text-center">
 			<h2 class="text-2xl font-semibold mb-2">Create new Account</h2>
 			<p class="mb-4">or <a href="/src/login.html" class="text-purple-600 hover:text-purple-500">Login with existing one</a></p>
-      <form action="/src/signup.html" method="POST">
+      <form
+      action="/src/signup.html"
+      method="POST"
+        x-data="signupForm"
+        @submit.prevent="submit"
+      >
         <div class="mb-3">
           <input
             type="text"
+            name="name"
+            x-model="form.name"
+            @input="validateName()"
             placeholder="Your Name"
-            class="w-full rounded border-gray-300 focus:border-purple-600 focus:ring-purple-600"
+            class="w-full rounded border-gray-300"
+            :class="errors.name ? errorClasses : (form.name ? successClasses : defaultClasses)"
           />
+          <small
+            class="text-red-500"
+            x-show="errors.name"
+            x-text="errors.name"
+          ></small>
         </div>
 
         <div class="mb-3">
           <input
             type="email"
             placeholder="Your Email"
-            class="w-full rounded border-gray-300 focus:border-purple-600 focus:ring-purple-600"
+            name="email"
+            x-model="form.email"
+            @input="validateEmail()"
+            class="w-full rounded border-gray-300"
+            :class="errors.email ? errorClasses : (form.email ? successClasses : defaultClasses)"
           />
+          <small
+            class="text-red-500"
+            x-show="errors.email"
+            x-text="errors.email"
+          ></small>
         </div>
 
         <div class="mb-3">
           <input
             type="password"
             placeholder="Password"
-            class="w-full rounded border-gray-300 focus:border-purple-600 focus:ring-purple-600"
+            name="password"
+            x-model="form.password"
+            @input="validatePassword()"
+            class="w-full rounded border-gray-300"
+            :class="errors.password ? errorClasses : (form.password ? successClasses : defaultClasses)"
           />
+          <small
+            class="text-red-500"
+            x-show="errors.password"
+            x-text="errors.password"
+          ></small>
         </div>
 
         <div class="mb-3">
           <input
             type="password"
             placeholder="Repeat Password"
-            class="w-full rounded border-gray-300 focus:border-purple-600 focus:ring-purple-600"
+            name="password_repeat"
+            x-model="form.password_repeat"
+            class="w-full rounded border-gray-300"
+            :class="errors.password_repeat ? errorClasses : (form.password_repeat ? successClasses : defaultClasses)"
           />
+          <small
+            class="text-red-500"
+            x-show="errors.password_repeat"
+            x-text="errors.password_repeat"
+          ></small>
         </div>
 
         <button class="flex items-center justify-center btn-emerald bg:bg-emerald-600 w-full mt-3">
