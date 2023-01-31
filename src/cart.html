@@ -578,20 +578,12 @@
                     <!-- Input Group-->
                     <div class="flex items-center">
                       Quantity:
-                      <select
-                        name=""
+                      <input
+                        type="number"
+                        name="quantity"
                         x-model="product.quantity"
                         class="ml-3 py-1 border-gray-200 focus:border-purple-600 focus:ring-purple-600"
-                      >
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                      </select>
+                      />
                     </div>
                     <a
                       @click.prevent="removeItemFromCart()"

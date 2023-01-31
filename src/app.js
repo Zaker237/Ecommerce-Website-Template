@@ -63,7 +63,7 @@ document.addEventListener('alpine:init', () => {
 		},
 		addToCart(id, quantity = 1) {
 			this.$store.header.cartItemsObject[id] = this.$store.header.cartItemsObject[id] || { ...product, quantity: 0 };
-			this.$store.header.cartItemsObject[id].quantity += parseInt(quantity);
+			this.$store.header.cartItemsObject[id].quantity = parseInt(this.$store.header.cartItemsObject[id].quantity) + parseInt(quantity);
 			this.$dispatch('notify', {
 				message: 'The item was added into the Cart'
 			});
